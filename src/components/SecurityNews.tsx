@@ -127,24 +127,6 @@ export default function SecurityNews() {
           </div>
         </div>
 
-        {/* Carousel Navigation Controls */}
-        <div className="flex items-center justify-end gap-2 mb-4">
-          <button
-            onClick={scrollLeft}
-            aria-label="Previous stories"
-            className="w-8 h-8 rounded border border-cyber-border bg-cyber-surface/80 hover:border-cyber-green/50 text-cyber-muted hover:text-white flex items-center justify-center transition-all shadow-sm"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
-            onClick={scrollRight}
-            aria-label="Next stories"
-            className="w-8 h-8 rounded border border-cyber-border bg-cyber-surface/80 hover:border-cyber-green/50 text-cyber-muted hover:text-white flex items-center justify-center transition-all shadow-sm"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-
         {/* Horizontal Carousel Container - Invisible scrollbar, smooth auto-scroll, pauses on hover */}
         <div
           ref={scrollRef}

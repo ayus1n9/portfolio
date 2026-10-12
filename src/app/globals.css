@@ -157,12 +157,12 @@ body {
                     linear-gradient(to bottom, rgba(30, 38, 52, 0.5) 1px, transparent 1px);
 }
 
-/* Broken Computer Cursor-Matched Glitch for Hero Heading (Unified with Pointer Physics) */
+/* Broken Computer Cursor-Matched Glitch for Hero Heading (Steady, Non-Blinking, No Hover Reaction) */
 .text-glitch-cursor {
   color: #ffffff;
   position: relative;
   display: inline-block;
-  animation: brokenGlitchSlice 2.4s infinite, brokenGlitchTwitch 0.4s infinite;
+  animation: brokenGlitchTwitch 0.45s infinite;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
 }
 
@@ -181,7 +181,7 @@ body {
 .text-glitch-cursor::before {
   color: #00f0ff;
   transform: translate(-2px, 1px);
-  animation: glitchRgbSplitCyan 0.3s steps(2) infinite;
+  animation: glitchRgbSplitCyan 0.35s steps(2) infinite;
   opacity: 0.85;
   text-shadow: -1px 0 #00f0ff;
 }
@@ -189,13 +189,9 @@ body {
 .text-glitch-cursor::after {
   color: #ff0055;
   transform: translate(2px, -1px);
-  animation: glitchRgbSplitRed 0.3s steps(2) infinite;
+  animation: glitchRgbSplitRed 0.35s steps(2) infinite;
   opacity: 0.85;
   text-shadow: 1px 0 #ff0055;
-}
-
-.text-glitch-cursor:hover {
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 45px rgba(77, 255, 136, 0.5);
 }
 
 /* Hide scrollbar completely across all browsers */
