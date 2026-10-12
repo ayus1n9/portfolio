@@ -62,8 +62,22 @@ export default function Footer() {
           </button>
         </div>
 
+        {/* Animated ASCII Telemetry Sculpture */}
+        <div className="py-10 flex flex-col items-center justify-center">
+          <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-xl overflow-hidden bg-black/90 border border-cyber-border/70 shadow-2xl flex items-center justify-center select-none cursor-default group hover:border-cyber-green/50 transition-colors">
+            {/* Ambient subtle cyber glow */}
+            <div className="absolute inset-0 bg-cyber-green/5 blur-xl pointer-events-none" />
+            <img
+              src="/ascii-fate.gif"
+              alt="Cyber ASCII Telemetry Sculpture"
+              className="w-full h-full object-contain pointer-events-none select-none"
+              draggable={false}
+            />
+          </div>
+        </div>
+
         {/* Bottom Credits & Motto */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-cyber-dim text-[11px]">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-cyber-dim text-[11px] border-t border-cyber-border/40">
           <div>
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
