@@ -7,7 +7,7 @@ import About from "@/components/About";
 import TerminalLab from "@/components/TerminalLab";
 import Projects from "@/components/Projects";
 import Arsenal from "@/components/Arsenal";
-import Experience from "@/components/Experience";
+import SecurityNews from "@/components/SecurityNews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CommandPalette from "@/components/CommandPalette";
@@ -39,8 +39,8 @@ export default function Home() {
       {/* Security Arsenal & Skills Matrix */}
       <Arsenal />
 
-      {/* Experience, Education & Certifications */}
-      <Experience />
+      {/* Global Cybersecurity & Threat Wire */}
+      <SecurityNews />
 
       {/* Contact & Transmission Channels */}
       <Contact />
