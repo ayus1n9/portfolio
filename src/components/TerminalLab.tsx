@@ -29,11 +29,19 @@ Try: 'whoami', 'nettrace', 'toposec', 'email-analyzer', 'threatlens'`,
   const [savedCommands, setSavedCommands] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
 
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const terminalScreenRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    // Only scroll the internal terminal container, never the window
+    if (terminalScreenRef.current) {
+      terminalScreenRef.current.scrollTop = terminalScreenRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleCommand = (rawCmd: string) => {
@@ -357,6 +365,7 @@ Containment Directives:
 
           {/* Terminal Screen Body */}
           <div
+            ref={terminalScreenRef}
             className="p-4 sm:p-6 min-h-[380px] max-h-[520px] overflow-y-auto space-y-4 text-xs sm:text-sm text-cyber-text"
             onClick={() => inputRef.current?.focus()}
           >
@@ -397,7 +406,6 @@ Containment Directives:
                 aria-label="Terminal command prompt"
               />
             </div>
-            <div ref={bottomRef} />
           </div>
 
           {/* Terminal Footer Bar */}
