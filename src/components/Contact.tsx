@@ -9,14 +9,14 @@ export default function Contact() {
     <section id="contact" className="py-24 border-t border-cyber-border/40 relative overflow-hidden">
       {/* Phosphor Signal ambient glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/5 blur-[160px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyber-green/5 blur-[160px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="cartouche-badge mb-3 select-none text-amber-400">06 // TRANSMISSION CHANNEL</div>
+          <div className="cartouche-badge mb-3 select-none text-cyber-green">06 // TRANSMISSION CHANNEL</div>
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Initiate Contact & Collaboration
           </h2>

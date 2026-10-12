@@ -114,14 +114,14 @@ export const MEDIA_STORIES_POOL = [
   // WIRED
   {
     outlet: "WIRED",
-    accentColor: "#ffb000",
+    accentColor: "#4dff88",
     bannerType: "wordmark" as const,
     bannerWordmark: {
       text: "WIRED",
       fontFamily: "font-mono font-black tracking-widest text-3xl",
-      color: "#ffb000",
-      glow: "0 0 25px rgba(255, 176, 0, 0.7), 0 0 45px rgba(255, 176, 0, 0.35)",
-      bgGradient: "linear-gradient(135deg, #140d04 0%, #241607 50%, #0d0802 100%)",
+      color: "#4dff88",
+      glow: "0 0 25px rgba(77, 255, 136, 0.7), 0 0 45px rgba(77, 255, 136, 0.35)",
+      bgGradient: "linear-gradient(135deg, #041208 0%, #092410 50%, #030d06 100%)",
     },
     badges: ["WIRED", "THREAT LEVEL"],
     title: "Microarchitectural Ghosts: Why Modern CPU Speculative Branches Refuse to Stay Closed",
