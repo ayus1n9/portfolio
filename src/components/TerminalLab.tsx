@@ -302,25 +302,31 @@ Containment Directives:
   };
 
   return (
-    <section id="lab" className="py-24 border-t border-cyber-border/40 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section id="lab" className="py-24 border-t border-cyber-border/40 relative overflow-hidden">
+      {/* Amber Phosphor ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/5 blur-[150px] rounded-full pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header with Amber CRT Cartouche */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="cartouche-badge mb-3 select-none">01 // CLI</div>
+          <div className="cartouche-badge mb-3 select-none text-amber-400">01 // CLI</div>
         </div>
 
-        {/* Terminal Window Frame */}
-        <div className="bg-black/90 border border-cyber-border rounded-lg shadow-2xl overflow-hidden font-mono max-w-5xl mx-auto">
+        {/* Terminal Window Frame - Amber Phosphor Theme */}
+        <div className="bg-[#090704]/95 border border-amber-500/30 rounded-lg shadow-2xl shadow-amber-950/20 overflow-hidden font-mono max-w-5xl mx-auto">
           {/* Title Bar */}
-          <div className="px-4 py-3 bg-cyber-raised border-b border-cyber-border flex items-center justify-between">
+          <div className="px-4 py-3 bg-[#140e07] border-b border-amber-500/25 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                <div className="w-3 h-3 rounded-full bg-cyber-green/80" />
+                <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
               </div>
-              <span className="text-xs text-cyber-muted font-bold tracking-wider ml-2 flex items-center gap-2">
-                <TerminalIcon className="w-3.5 h-3.5 text-cyber-green" />
+              <span className="text-xs text-amber-200/80 font-bold tracking-wider ml-2 flex items-center gap-2">
+                <TerminalIcon className="w-3.5 h-3.5 text-amber-400" />
                 us3r@home:~$ bash
               </span>
             </div>
@@ -338,23 +344,23 @@ Containment Directives:
                     },
                   ]);
                 }}
-                className="p-1 rounded text-cyber-dim hover:text-cyber-green transition-colors"
+                className="p-1 rounded text-amber-600 hover:text-amber-400 transition-colors"
                 title="Toggle terminal sound feedback"
                 aria-label="Toggle terminal audio"
               >
-                {isSoundEnabled() ? <Volume2 className="w-3.5 h-3.5 text-cyber-green" /> : <VolumeX className="w-3.5 h-3.5" />}
+                {isSoundEnabled() ? <Volume2 className="w-3.5 h-3.5 text-amber-400" /> : <VolumeX className="w-3.5 h-3.5" />}
               </button>
               <button
                 onClick={copyTerminalOutput}
-                className="p-1 rounded text-cyber-dim hover:text-cyber-green transition-colors"
+                className="p-1 rounded text-amber-600 hover:text-amber-400 transition-colors"
                 title="Copy terminal session"
                 aria-label="Copy terminal text"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-cyber-green" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-amber-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
               <button
                 onClick={() => setHistory([])}
-                className="p-1 rounded text-cyber-dim hover:text-cyber-muted transition-colors"
+                className="p-1 rounded text-amber-600 hover:text-amber-400 transition-colors"
                 title="Reset terminal"
                 aria-label="Reset terminal"
               >
@@ -366,22 +372,22 @@ Containment Directives:
           {/* Terminal Screen Body */}
           <div
             ref={terminalScreenRef}
-            className="p-4 sm:p-6 min-h-[380px] max-h-[520px] overflow-y-auto space-y-4 text-xs sm:text-sm text-cyber-text"
+            className="p-4 sm:p-6 min-h-[380px] max-h-[520px] overflow-y-auto space-y-4 text-xs sm:text-sm text-amber-100/90"
             onClick={() => inputRef.current?.focus()}
           >
             {history.map((item, idx) => (
               <div key={idx} className="space-y-1">
-                <div className="flex items-center gap-2 text-cyber-muted">
-                  <span className="text-cyber-green font-bold">us3r@home:~$</span>
-                  <span className="text-white font-semibold">{item.command}</span>
+                <div className="flex items-center gap-2 text-amber-400/70">
+                  <span className="text-amber-400 font-bold">us3r@home:~$</span>
+                  <span className="text-amber-100 font-semibold">{item.command}</span>
                 </div>
                 <pre
                   className={`whitespace-pre-wrap font-mono leading-relaxed pl-4 border-l ${
                     item.type === "alert"
-                      ? "text-cyber-amber border-cyber-amber/40"
+                      ? "text-red-400 border-red-500/50"
                       : item.type === "success"
-                      ? "text-cyber-green border-cyber-green/40"
-                      : "text-cyber-muted border-cyber-border"
+                      ? "text-amber-400 border-amber-400/60"
+                      : "text-amber-100/80 border-amber-500/25"
                   }`}
                 >
                   {item.output}
@@ -390,8 +396,8 @@ Containment Directives:
             ))}
 
             {/* Live Command Line Input */}
-            <div className="flex items-center gap-2 text-cyber-muted pt-2">
-              <span className="text-cyber-green font-bold shrink-0">us3r@home:~$</span>
+            <div className="flex items-center gap-2 text-amber-400/70 pt-2">
+              <span className="text-amber-400 font-bold shrink-0">us3r@home:~$</span>
               <input
                 ref={inputRef}
                 type="text"
@@ -402,21 +408,21 @@ Containment Directives:
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder="type 'help' or any command..."
-                className="w-full bg-transparent border-none outline-none text-cyber-text font-mono text-xs sm:text-sm placeholder:text-cyber-dim/50 caret-cyber-green focus:ring-0 p-0"
+                className="w-full bg-transparent border-none outline-none text-amber-100 font-mono text-xs sm:text-sm placeholder:text-amber-700/50 caret-amber-400 focus:ring-0 p-0"
                 aria-label="Terminal command prompt"
               />
             </div>
           </div>
 
           {/* Terminal Footer Bar */}
-          <div className="px-4 py-2 bg-cyber-surface/80 border-t border-cyber-border text-[11px] text-cyber-dim flex items-center justify-between">
+          <div className="px-4 py-2 bg-[#100b06] border-t border-amber-500/20 text-[11px] text-amber-600/70 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyber-green" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400" />
               <span>TERMINAL SANDBOX ISOLATION: ACTIVE</span>
             </div>
             <div className="hidden sm:flex items-center gap-3">
               <span>UP/DOWN FOR COMMAND HISTORY</span>
-              <span className="text-cyber-green">TYPE &apos;HELP&apos; FOR DIRECTORY</span>
+              <span className="text-amber-400">TYPE &apos;HELP&apos; FOR DIRECTORY</span>
             </div>
           </div>
         </div>
