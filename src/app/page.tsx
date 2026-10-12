@@ -23,11 +23,11 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
-      {/* About Operator */}
-      <About />
-
       {/* Interactive Terminal Lab & Simulator */}
       <TerminalLab />
+
+      {/* About Operator */}
+      <About />
 
       {/* Featured Projects & Case Studies */}
       <Projects />

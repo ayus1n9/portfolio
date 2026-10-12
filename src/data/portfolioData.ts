@@ -36,16 +36,10 @@ export const PORTFOLIO_DATA = {
     statusText: "OPERATIONAL // SECURITY TOOLMAKING & DEFENSE",
     location: "Amaravati, India",
     email: "ayusingh0416@gmail.com",
-    phone: "+91-6206149614",
     github: "https://github.com/ayus1n9",
     linkedin: "https://linkedin.com/in/ayus1n9",
     resumeUrl: "/resume.pdf",
     headline: "Building tools. Investigating threats. Engineering security.",
-    bio: [
-      "I am a Computer Science student at VIT-AP University specializing in Cybersecurity. My work focuses on building practical security tools, investigating malicious network traffic, threat intelligence automation, and application security hardening.",
-      "Rather than relying on abstract theories, I build hands-on offensive instrumentation and defensive triage pipelines—from offline PCAP malware analysis in NetTrace to RFC 1918-safe OSINT enrichment in ThreatLens and architectural rule validation in toposec.",
-      "With hands-on experience in API hardening and CI/CD security at Vectr, I bridge the gap between how systems are built and how adversaries attempt to exploit them."
-    ],
     quickStats: [
       { label: "SECURITY TOOLS", value: "5+ Built" },
       { label: "OFFLINE TESTS", value: "100+ Passing" },
