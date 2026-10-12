@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Terminal, Shield, Cpu, Lock, Crosshair, Flag, CheckCircle2 } from "lucide-react";
+import { Flag, CheckCircle2 } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export default function Arsenal() {
@@ -16,10 +16,6 @@ export default function Arsenal() {
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Offensive & Defensive Tooling Matrix
           </h2>
-          <p className="mt-4 text-cyber-muted max-w-2xl text-sm sm:text-base leading-relaxed font-sans">
-            Strictly functional competence organized by operational domain. No arbitrary percentage bars—each
-            capability is tied to practical project implementations, lab setups, or CTF environments.
-          </p>
         </div>
 
         {/* Category Tabs */}
