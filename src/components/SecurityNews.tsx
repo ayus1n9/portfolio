@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, RefreshCw, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
 import { getDailyMediaNews, MediaCard } from "@/data/mediaNewsData";
 
 export default function SecurityNews() {
   const [dailyData, setDailyData] = useState(() => getDailyMediaNews());
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Fetch from the 24h-cached API route to ensure daily freshness
@@ -31,6 +32,30 @@ export default function SecurityNews() {
 
     loadFreshDailyNews();
   }, []);
+
+  // Smooth continuous auto-scrolling with pause on hover
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animId: number;
+    const speed = 0.65; // Smooth cinematic ticker speed
+
+    const step = () => {
+      if (!isPaused && container) {
+        container.scrollLeft += speed;
+        // When scrolled past the first set, wrap seamlessly
+        const halfWidth = container.scrollWidth / 2;
+        if (halfWidth > 0 && container.scrollLeft >= halfWidth) {
+          container.scrollLeft -= halfWidth;
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [isPaused, dailyData.cards]);
 
   const handleManualRefresh = async () => {
     setIsRefreshing(true);
@@ -65,6 +90,9 @@ export default function SecurityNews() {
     }
   };
 
+  // Duplicate cards for seamless infinite looping
+  const infiniteCards = [...dailyData.cards, ...dailyData.cards];
+
   return (
     <section id="news" className="py-20 border-t border-cyber-border/40 relative overflow-hidden">
       {/* Anchor for media navigation */}
@@ -86,8 +114,6 @@ export default function SecurityNews() {
           {/* Daily Refresh Telemetry Subtitle */}
           <div className="mt-3 flex items-center gap-2 font-mono text-[11px] text-cyber-dim select-none">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse" />
-            <span>DAILY INTELLIGENCE CYCLE</span>
-            <span>•</span>
             <span className="text-cyber-muted">{dailyData.lastUpdatedFormatted}</span>
             <span>•</span>
             <button
@@ -96,7 +122,7 @@ export default function SecurityNews() {
               className="inline-flex items-center gap-1 text-cyber-dim hover:text-cyber-green transition-colors ml-1"
             >
               <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-cyber-green" : ""}`} />
-              <span className="text-[10px]">24H SYNC</span>
+              <span className="text-[10px]">SYNC</span>
             </button>
           </div>
         </div>
@@ -119,16 +145,27 @@ export default function SecurityNews() {
           </button>
         </div>
 
-        {/* Horizontal Carousel Container */}
+        {/* Horizontal Carousel Container - Invisible scrollbar, smooth auto-scroll, pauses on hover */}
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto pb-6 scrollbar-thin scroll-smooth snap-x snap-mandatory focus:outline-none -mx-4 px-4 sm:mx-0 sm:px-0"
-          style={{ scrollbarWidth: "thin" }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          className="flex gap-5 overflow-x-auto pb-4 no-scrollbar focus:outline-none -mx-4 px-4 sm:mx-0 sm:px-0"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
         >
-          {dailyData.cards.map((card) => (
-            <div
-              key={card.id}
-              className="flex-none w-[285px] sm:w-[310px] md:w-[325px] snap-start bg-[#0a0d13] border border-cyber-border/80 hover:border-cyber-green/40 rounded-xl overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-cyber-green/5"
+          {infiniteCards.map((card, idx) => (
+            <a
+              key={`${card.id}-loop-${idx}`}
+              href={card.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${card.outlet}: ${card.title}`}
+              className="flex-none w-[285px] sm:w-[310px] md:w-[325px] bg-[#0a0d13] border border-cyber-border/80 hover:border-cyber-green/50 rounded-xl overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-cyber-green/10 cursor-pointer block text-inherit no-underline select-none"
             >
               {/* Top Accent Rim */}
               <div
@@ -201,17 +238,12 @@ export default function SecurityNews() {
 
                 {/* Bottom Action Link */}
                 <div className="pt-6">
-                  <a
-                    href={card.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block font-mono text-xs font-bold tracking-widest text-cyber-green hover:underline hover:text-white transition-colors"
-                  >
+                  <span className="inline-block font-mono text-xs font-bold tracking-widest text-cyber-green group-hover:underline group-hover:text-white transition-colors">
                     {card.actionText}
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
