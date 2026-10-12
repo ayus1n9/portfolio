@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
-import { Terminal as TerminalIcon, Play, RotateCcw, Copy, Check, Info, Volume2, VolumeX } from "lucide-react";
+import { Terminal as TerminalIcon, RotateCcw, Copy, Check, Volume2, VolumeX } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { playKeyBlip, playCommandSuccess, playAlertBuzzer, toggleSound, isSoundEnabled } from "@/utils/audio";
 
@@ -22,7 +22,7 @@ export default function TerminalLab() {
   All simulated routines strictly mirror actual repository logic.
 ======================================================================
 Type 'help' to inspect available security tool simulations.
-Try: 'threatlens', 'nettrace', 'toposec', 'email-analyzer', 'whoami'`,
+Try: 'whoami', 'nettrace', 'toposec', 'email-analyzer', 'threatlens'`,
       type: "standard",
     },
   ]);
@@ -70,7 +70,7 @@ Try: 'threatlens', 'nettrace', 'toposec', 'email-analyzer', 'whoami'`,
   Handle:         ${PORTFOLIO_DATA.personal.handle}
   University:     VIT-AP University (B.Tech Computer Science, Cybersecurity Specialization 2023-2027)
   Experience:     Vectr (Web Developer – AppSec & API Hardening, 2023-2026)
-  Focus Areas:    Red Teaming, Network Forensics (PCAP), SOC Enrichment Automation, API Security
+  Focus Areas:    Red Teaming, Network Forensics, SOC Enrichment Automation, API Security, Cloud Security, DevSecOps
   Location:       ${PORTFOLIO_DATA.personal.location}
   GitHub:         ${PORTFOLIO_DATA.personal.github}`;
         resType = "success";
@@ -231,7 +231,6 @@ Containment Directives:
         response = `COMMUNICATION CHANNELS:
   Email:    ${PORTFOLIO_DATA.personal.email}
   GitHub:   ${PORTFOLIO_DATA.personal.github}
-  Phone:    ${PORTFOLIO_DATA.personal.phone}
   Status:   Open for Cybersecurity Internships, Red Team & SOC Analyst Roles`;
         resType = "success";
         break;
@@ -300,36 +299,10 @@ Containment Directives:
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="cartouche-badge mb-3">02 // INTERACTIVE LAB</div>
+          <div className="cartouche-badge mb-3">01 // INTERACTIVE LAB</div>
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Terminal Telemetry & Tool Simulator
           </h2>
-          <p className="mt-4 text-cyber-muted max-w-2xl text-sm sm:text-base leading-relaxed font-sans">
-            Execute actual command-line routines from my security repositories. All simulated outputs
-            faithfully reproduce the behavior and schemas of my actual Python tools.
-          </p>
-        </div>
-
-        {/* Quick Suggestion Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-          <span className="text-xs font-mono text-cyber-dim mr-2 hidden sm:inline">QUICK SIMULATIONS:</span>
-          {[
-            { cmd: "threatlens 185.220.101.5", label: "ThreatLens (Public IP)" },
-            { cmd: "threatlens 192.168.1.100", label: "ThreatLens (RFC 1918 Block)" },
-            { cmd: "nettrace", label: "NetTrace (PCAP Hunt)" },
-            { cmd: "toposec", label: "TopoSec (6-Rule Check)" },
-            { cmd: "email-analyzer", label: "Email-Analyzer" },
-            { cmd: "whoami", label: "whoami" },
-          ].map((item, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleCommand(item.cmd)}
-              className="px-3 py-1.5 rounded bg-cyber-surface border border-cyber-border hover:border-cyber-green text-cyber-muted hover:text-cyber-green text-xs font-mono transition-all flex items-center gap-1.5"
-            >
-              <Play className="w-2.5 h-2.5 text-cyber-green" />
-              <span>{item.label}</span>
-            </button>
-          ))}
         </div>
 
         {/* Terminal Window Frame */}
