@@ -63,12 +63,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Credits, ASCII Sculpture & Motto */}
-        <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-cyber-dim text-[11px]">
-          <div className="order-1 lg:order-1 text-center lg:text-left whitespace-nowrap">
+        <div className="pt-8 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px]">
+          <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3">
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
 
-          <div className="order-2 lg:order-2 flex items-center justify-center select-none pointer-events-none">
+          <div className="order-1 lg:order-2 flex items-center justify-center select-none pointer-events-none">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] flex items-center justify-center">
               <img
                 src="/ascii-fate.gif"
@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="order-3 lg:order-3 tracking-widest text-cyber-red/80 text-center lg:text-right">
+          <div className="order-3 lg:order-3 tracking-widest text-cyber-red/80 text-center lg:text-right lg:pb-3">
             der anfang ist das ende. und das ende ist der anfang.
           </div>
         </div>
