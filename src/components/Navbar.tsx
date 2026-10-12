@@ -33,9 +33,9 @@ export default function Navbar({ onOpenCommandPalette }: NavbarProps) {
           : "bg-transparent border-b border-cyber-border/30 py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Desktop Nav Links */}
-        <nav className="flex items-center gap-6 mx-auto sm:mx-0" aria-label="Main Navigation">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+        {/* Centered Nav Links */}
+        <nav className="flex items-center gap-6 sm:gap-8 justify-center" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
               key={link.href}
