@@ -107,7 +107,7 @@ export default function SecurityNews() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Pliny/Media Cartouche Header */}
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="cartouche-badge text-sm sm:text-base select-none tracking-widest text-cyber-green font-mono">
+          <div className="cartouche-badge mb-3 select-none text-cyber-green">
             05 // MEDIA
           </div>
 

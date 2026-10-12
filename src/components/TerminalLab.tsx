@@ -310,7 +310,7 @@ Containment Directives:
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header with Amber CRT Cartouche */}
+        {/* Section Header with Cyber Green Cartouche */}
         <div className="flex flex-col items-center text-center mb-12">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">01 // CLI</div>
         </div>
