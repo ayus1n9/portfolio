@@ -208,7 +208,8 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
             }}
             onKeyDown={handleKeyDownInInput}
             placeholder="Search commands, sections, or projects..."
-            className="w-full bg-transparent border-none outline-none text-cyber-text placeholder:text-cyber-dim text-sm focus:ring-0 p-0"
+            className="w-full bg-transparent border-0 border-none outline-none focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 shadow-none focus:shadow-none text-cyber-text placeholder:text-cyber-dim text-sm p-0"
+            style={{ outline: "none", border: "none", boxShadow: "none" }}
           />
           <button
             onClick={onClose}
