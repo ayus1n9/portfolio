@@ -48,7 +48,7 @@ export default function Hero() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 110) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 176, 0, ${(1 - dist / 110) * 0.15})`;
+            ctx.strokeStyle = `rgba(77, 255, 136, ${(1 - dist / 110) * 0.12})`;
             ctx.lineWidth = 0.6;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -67,7 +67,7 @@ export default function Hero() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(254, 243, 199, 0.85)";
+        ctx.fillStyle = "rgb(255, 255, 255)";
         ctx.fill();
       }
 
@@ -95,7 +95,7 @@ export default function Hero() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
         {/* Tactical Status Pill */}
-        <div className="cartouche-badge mb-6 text-xs sm:text-sm select-none text-amber-400">
+        <div className="cartouche-badge mb-6 text-xs sm:text-sm select-none text-cyber-green">
           0_0
         </div>
 
