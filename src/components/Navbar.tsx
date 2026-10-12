@@ -18,10 +18,10 @@ export default function Navbar({ onOpenCommandPalette }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Arsenal", href: "#arsenal" },
-    { label: "Experience", href: "#experience" },
+    { label: "Global News", href: "#news" },
     { label: "Contact", href: "#contact" },
   ];
 
