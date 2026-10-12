@@ -408,7 +408,8 @@ Containment Directives:
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder="type 'help' or any command..."
-                className="w-full bg-transparent border-none outline-none text-amber-100 font-mono text-xs sm:text-sm placeholder:text-amber-700/50 caret-amber-400 focus:ring-0 p-0"
+                className="w-full bg-transparent border-0 border-none outline-none focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 shadow-none focus:shadow-none text-amber-100 font-mono text-xs sm:text-sm placeholder:text-amber-700/50 caret-amber-400 p-0"
+                style={{ outline: "none", border: "none", boxShadow: "none" }}
                 aria-label="Terminal command prompt"
               />
             </div>

@@ -5,23 +5,23 @@
 @tailwind utilities;
 
 :root {
-  --bg-root: #07090b;
-  --bg-surface: #0d1117;
-  --accent-green: #4dff88;
-  --accent-cyan: #61e7ff;
-  --border-subtle: #1e2634;
+  --bg-root: #000000;
+  --bg-surface: #0a0805;
+  --accent-green: #ffb000;
+  --accent-cyan: #fbbf24;
+  --border-subtle: #261a0a;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #07090b;
-  color: #f1f5f9;
+  background-color: #000000;
+  color: #fef3c7;
   color-scheme: dark;
 }
 
 body {
-  background-color: #07090b;
-  color: #f1f5f9;
+  background-color: #000000;
+  color: #fef3c7;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   position: relative;
@@ -29,8 +29,8 @@ body {
 }
 
 ::selection {
-  background-color: #4dff88;
-  color: #07090b;
+  background-color: #ffb000;
+  color: #000000;
 }
 
 /* Custom Scrollbar */
@@ -40,25 +40,35 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #07090b;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e2634;
+  background: #261a0a;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4dff88;
+  background: #ffb000;
 }
 
-/* Focus styles */
+/* Focus styles - completely eliminate borders/outlines on inputs */
 :focus-visible {
-  outline: 2px solid #4dff88;
-  outline-offset: 2px;
+  outline: none;
 }
 
-/* Scanline Overlay (Pliny.gg inspired, restrained) */
+input, textarea, [contenteditable] {
+  outline: none !important;
+  border-color: transparent !important;
+}
+
+input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* Scanline Overlay (Warm Amber Phosphor CRT style) */
 .scanlines-ambient {
   position: fixed;
   inset: 0;
@@ -67,8 +77,8 @@ body {
   opacity: 0.35;
   background-image: repeating-linear-gradient(
     to bottom,
-    rgba(77, 255, 136, 0.04) 0px,
-    rgba(77, 255, 136, 0.04) 1px,
+    rgba(255, 176, 0, 0.035) 0px,
+    rgba(255, 176, 0, 0.035) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -85,9 +95,9 @@ body {
   background-size: 24px 24px;
 }
 
-/* Kinetic Gradient Sweep for Headings (Pliny.gg inspired) */
+/* Kinetic Gradient Sweep for Headings (Amber Phosphor CRT) */
 .kinetic-sweep {
-  background-image: linear-gradient(110deg, #4dff88 0%, #baffd9 25%, #61e7ff 50%, #4dff88 100%);
+  background-image: linear-gradient(110deg, #ffb000 0%, #fef3c7 25%, #fbbf24 50%, #ffb000 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -105,20 +115,20 @@ body {
   }
 }
 
-/* Phosphor Glow Utilities */
+/* Phosphor Glow Utilities (DEC VT220 Amber) */
 .glow-green {
-  text-shadow: 0 0 12px rgba(77, 255, 136, 0.45), 0 0 24px rgba(77, 255, 136, 0.2);
+  text-shadow: 0 0 12px rgba(255, 176, 0, 0.5), 0 0 24px rgba(255, 176, 0, 0.25);
 }
 
 .glow-cyan {
-  text-shadow: 0 0 12px rgba(97, 231, 255, 0.45);
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
 }
 
 .box-glow-green {
-  box-shadow: 0 0 20px -5px rgba(77, 255, 136, 0.2);
+  box-shadow: 0 0 20px -5px rgba(255, 176, 0, 0.25);
 }
 
-/* Pliny-style cartouche ornament for section heads (inherits section palette color) */
+/* Pliny-style cartouche ornament for section heads */
 .cartouche-badge {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.8rem;
@@ -155,17 +165,17 @@ body {
 /* Grid Background */
 .grid-pattern {
   background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(30, 38, 52, 0.5) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(30, 38, 52, 0.5) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(38, 26, 10, 0.5) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(38, 26, 10, 0.5) 1px, transparent 1px);
 }
 
-/* Broken Computer Cursor-Matched Glitch for Hero Heading (Steady, Non-Blinking, No Hover Reaction) */
+/* Broken Computer Cursor-Matched Glitch for Hero Heading (Amber Phosphor CRT) */
 .text-glitch-cursor {
-  color: #ffffff;
+  color: #ffb000;
   position: relative;
   display: inline-block;
   animation: brokenGlitchTwitch 0.45s infinite;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+  text-shadow: 0 0 14px rgba(255, 176, 0, 0.4);
 }
 
 .text-glitch-cursor::before,
@@ -181,19 +191,19 @@ body {
 }
 
 .text-glitch-cursor::before {
-  color: #00f0ff;
+  color: #fbbf24;
   transform: translate(-2px, 1px);
   animation: glitchRgbSplitCyan 0.35s steps(2) infinite;
   opacity: 0.85;
-  text-shadow: -1px 0 #00f0ff;
+  text-shadow: -1px 0 #fbbf24;
 }
 
 .text-glitch-cursor::after {
-  color: #ff0055;
+  color: #f59e0b;
   transform: translate(2px, -1px);
   animation: glitchRgbSplitRed 0.35s steps(2) infinite;
   opacity: 0.85;
-  text-shadow: 1px 0 #ff0055;
+  text-shadow: 1px 0 #f59e0b;
 }
 
 /* Hide scrollbar completely across all browsers */
