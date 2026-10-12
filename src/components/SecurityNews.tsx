@@ -98,30 +98,30 @@ export default function SecurityNews() {
       {/* Anchor for media navigation */}
       <div id="media" className="absolute -top-12 left-0" />
 
-      {/* Background radial gradient glow */}
+      {/* Background radial gradient glow - Ultraviolet Media Theme */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-cyber-green/5 blur-[160px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-purple-600/5 blur-[170px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Pliny/Media Cartouche Header */}
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="cartouche-badge text-sm sm:text-base select-none tracking-widest text-cyber-green font-mono">
-            MEDIA
+          <div className="cartouche-badge text-sm sm:text-base select-none tracking-widest text-purple-400 font-mono">
+            05 // MEDIA
           </div>
 
           {/* Daily Refresh Telemetry Subtitle */}
-          <div className="mt-3 flex items-center gap-2 font-mono text-[11px] text-cyber-dim select-none">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse" />
-            <span className="text-cyber-muted">{dailyData.lastUpdatedFormatted}</span>
+          <div className="mt-3 flex items-center gap-2 font-mono text-[11px] text-purple-400/60 select-none">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+            <span className="text-purple-300/80">{dailyData.lastUpdatedFormatted}</span>
             <span>•</span>
             <button
               onClick={handleManualRefresh}
               title="Sync latest 24h dispatch"
-              className="inline-flex items-center gap-1 text-cyber-dim hover:text-cyber-green transition-colors ml-1"
+              className="inline-flex items-center gap-1 text-purple-400/70 hover:text-purple-300 transition-colors ml-1"
             >
-              <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-cyber-green" : ""}`} />
+              <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-purple-400" : ""}`} />
               <span className="text-[10px]">SYNC</span>
             </button>
           </div>
