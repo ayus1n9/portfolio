@@ -45,7 +45,7 @@ export default function GlitchCursor() {
 
       // Add to glitch trails periodically
       if (frameCount % 3 === 0) {
-        const colors = ["#4dff88", "#00f0ff", "#ff0055", "#ffffff"];
+        const colors = ["#ffb000", "#ffc233", "#f59e0b", "#fef3c7"];
         const chosenColor = colors[Math.floor(Math.random() * colors.length)];
         trailsRef.current.push({
           x: e.clientX + (Math.random() * 8 - 4),
@@ -171,26 +171,26 @@ export default function GlitchCursor() {
         aria-hidden="true"
       >
         <div className="relative">
-          {/* Cyan Chromatic Aberration Ghost Layer */}
+          {/* Amber Golden Aberration Ghost Layer */}
           <div
-            className="absolute top-0 left-0 text-[#00f0ff] opacity-80"
+            className="absolute top-0 left-0 text-[#fbbf24] opacity-80"
             style={{
               transform: "translate(-2px, 1px)",
               animation: "glitchRgbSplitCyan 0.3s steps(2) infinite",
             }}
           >
-            <CursorGraphic isHovered={isHovered} isClicking={isClicking} strokeColor="#00f0ff" />
+            <CursorGraphic isHovered={isHovered} isClicking={isClicking} strokeColor="#fbbf24" />
           </div>
 
-          {/* Red/Magenta Chromatic Aberration Ghost Layer */}
+          {/* Deep Amber Aberration Ghost Layer */}
           <div
-            className="absolute top-0 left-0 text-[#ff0055] opacity-80"
+            className="absolute top-0 left-0 text-[#f59e0b] opacity-80"
             style={{
               transform: "translate(2px, -1px)",
               animation: "glitchRgbSplitRed 0.3s steps(2) infinite",
             }}
           >
-            <CursorGraphic isHovered={isHovered} isClicking={isClicking} strokeColor="#ff0055" />
+            <CursorGraphic isHovered={isHovered} isClicking={isClicking} strokeColor="#f59e0b" />
           </div>
 
           {/* Core Broken Cursor Layer */}
@@ -199,15 +199,15 @@ export default function GlitchCursor() {
               animation: "brokenGlitchSlice 2.4s infinite, brokenGlitchTwitch 0.4s infinite",
             }}
           >
-            <CursorGraphic isHovered={isHovered} isClicking={isClicking} strokeColor="#ffffff" />
+            <CursorGraphic isHovered={isHovered} isClicking={isClicking} strokeColor="#fef3c7" />
           </div>
 
           {/* Digital Glitch Error Readout Badge */}
           <div
-            className={`absolute left-5 top-5 px-1.5 py-0.5 rounded bg-black/90 border font-mono text-[9px] tracking-wider whitespace-nowrap transition-all ${
+            className={`absolute left-5 top-5 px-1.5 py-0.5 rounded bg-black/95 border font-mono text-[9px] tracking-wider whitespace-nowrap transition-all ${
               isHovered
-                ? "border-cyber-red text-cyber-red shadow-lg shadow-cyber-red/20 scale-105"
-                : "border-cyber-green/60 text-cyber-green shadow-sm"
+                ? "border-amber-400 text-amber-300 shadow-lg shadow-amber-500/20 scale-105"
+                : "border-amber-500/60 text-amber-400 shadow-sm"
             }`}
             style={{ animation: "brokenGlitchTwitch 0.6s infinite" }}
           >
@@ -217,7 +217,7 @@ export default function GlitchCursor() {
 
           {/* Click Glitch Distortion Burst Ring */}
           {isClicking && (
-            <div className="absolute -top-3 -left-3 w-10 h-10 border border-cyber-red rounded-none animate-ping opacity-90 pointer-events-none" />
+            <div className="absolute -top-3 -left-3 w-10 h-10 border border-amber-400 rounded-none animate-ping opacity-90 pointer-events-none" />
           )}
         </div>
       </div>
@@ -277,7 +277,7 @@ function CursorGraphic({
       {/* Broken Jagged Arrow with Stepped Digital Silhouette */}
       <path
         d="M2 1L2 17L6 13L10 21L13 19.5L9 11.5L15 11.5L2 1Z"
-        fill="#07090b"
+        fill="#000000"
         stroke={strokeColor}
         strokeWidth="1.75"
         strokeLinejoin="miter"
