@@ -15,7 +15,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="cartouche-badge mb-3">03 // FEATURED PROJECTS</div>
+          <div className="cartouche-badge mb-3 select-none">03 // FEATURED PROJECTS</div>
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Security Tooling & Investigative Code
           </h2>

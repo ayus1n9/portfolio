@@ -17,8 +17,7 @@ export default function TerminalLab() {
     {
       command: "welcome",
       output: `======================================================================
-  AYUS1N9 CYBERSECURITY RESEARCH WORKBENCH v2.4 (CLI EMULATOR)
-  Target Environment: Linux (x86_64) | Active Host: lab.ayus1n9.sec
+  Target Environment: Linux (x86_64) | Active Host: us3r@home
   All simulated routines strictly mirror actual repository logic.
 ======================================================================
 Type 'help' to inspect available security tool simulations.
@@ -299,10 +298,7 @@ Containment Directives:
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="cartouche-badge mb-3">01 // INTERACTIVE LAB</div>
-          <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
-            Terminal Telemetry & Tool Simulator
-          </h2>
+          <div className="cartouche-badge mb-3 select-none">01 // CLI</div>
         </div>
 
         {/* Terminal Window Frame */}
@@ -317,7 +313,7 @@ Containment Directives:
               </div>
               <span className="text-xs text-cyber-muted font-bold tracking-wider ml-2 flex items-center gap-2">
                 <TerminalIcon className="w-3.5 h-3.5 text-cyber-green" />
-                ayush@lab.ayus1n9.sec:~$ bash
+                us3r@home:~$ bash
               </span>
             </div>
 
@@ -367,7 +363,7 @@ Containment Directives:
             {history.map((item, idx) => (
               <div key={idx} className="space-y-1">
                 <div className="flex items-center gap-2 text-cyber-muted">
-                  <span className="text-cyber-green font-bold">ayush@lab:~$</span>
+                  <span className="text-cyber-green font-bold">us3r@home:~$</span>
                   <span className="text-white font-semibold">{item.command}</span>
                 </div>
                 <pre
@@ -386,7 +382,7 @@ Containment Directives:
 
             {/* Live Command Line Input */}
             <div className="flex items-center gap-2 text-cyber-muted pt-2">
-              <span className="text-cyber-green font-bold shrink-0">ayush@lab:~$</span>
+              <span className="text-cyber-green font-bold shrink-0">us3r@home:~$</span>
               <input
                 ref={inputRef}
                 type="text"
