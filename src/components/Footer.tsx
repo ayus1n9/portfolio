@@ -62,26 +62,24 @@ export default function Footer() {
           </button>
         </div>
 
-        {/* Animated ASCII Telemetry Sculpture */}
-        <div className="py-10 flex flex-col items-center justify-center">
-          <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-xl overflow-hidden bg-black/90 border border-cyber-border/70 shadow-2xl flex items-center justify-center select-none cursor-default group hover:border-cyber-green/50 transition-colors">
-            {/* Ambient subtle cyber glow */}
-            <div className="absolute inset-0 bg-cyber-green/5 blur-xl pointer-events-none" />
-            <img
-              src="/ascii-fate.gif"
-              alt="Cyber ASCII Telemetry Sculpture"
-              className="w-full h-full object-contain pointer-events-none select-none"
-              draggable={false}
-            />
-          </div>
-        </div>
-
-        {/* Bottom Credits & Motto */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-cyber-dim text-[11px] border-t border-cyber-border/40">
-          <div>
+        {/* Bottom Credits, ASCII Sculpture & Motto */}
+        <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-cyber-dim text-[11px]">
+          <div className="order-1 lg:order-1 text-center lg:text-left whitespace-nowrap">
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
-          <div className="tracking-widest text-cyber-red/80">
+
+          <div className="order-2 lg:order-2 flex items-center justify-center select-none pointer-events-none">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] flex items-center justify-center">
+              <img
+                src="/ascii-fate.gif"
+                alt="Cyber ASCII Sculpture"
+                className="w-full h-full object-contain mix-blend-screen pointer-events-none select-none"
+                draggable={false}
+              />
+            </div>
+          </div>
+
+          <div className="order-3 lg:order-3 tracking-widest text-cyber-red/80 text-center lg:text-right">
             der anfang ist das ende. und das ende ist der anfang.
           </div>
         </div>
