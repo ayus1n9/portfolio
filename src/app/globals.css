@@ -5,23 +5,23 @@
 @tailwind utilities;
 
 :root {
-  --bg-root: #000000;
-  --bg-surface: #0a0805;
-  --accent-green: #ffb000;
-  --accent-cyan: #fbbf24;
-  --border-subtle: #261a0a;
+  --bg-root: #07090b;
+  --bg-surface: #0d1117;
+  --accent-green: #4dff88;
+  --accent-cyan: #61e7ff;
+  --border-subtle: #1e2634;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
-  color: #fef3c7;
+  background-color: #07090b;
+  color: #f1f5f9;
   color-scheme: dark;
 }
 
 body {
-  background-color: #000000;
-  color: #fef3c7;
+  background-color: #07090b;
+  color: #f1f5f9;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   position: relative;
@@ -29,8 +29,8 @@ body {
 }
 
 ::selection {
-  background-color: #ffb000;
-  color: #000000;
+  background-color: #4dff88;
+  color: #07090b;
 }
 
 /* Custom Scrollbar */
@@ -40,16 +40,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #07090b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #261a0a;
+  background: #1e2634;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffb000;
+  background: #4dff88;
 }
 
 /* Focus styles - completely eliminate borders/outlines on inputs */
@@ -68,7 +68,7 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   border-color: transparent !important;
 }
 
-/* Scanline Overlay (Warm Amber Phosphor CRT style) */
+/* Scanline Overlay (Pliny.gg inspired, cyber green) */
 .scanlines-ambient {
   position: fixed;
   inset: 0;
@@ -77,8 +77,8 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   opacity: 0.35;
   background-image: repeating-linear-gradient(
     to bottom,
-    rgba(255, 176, 0, 0.035) 0px,
-    rgba(255, 176, 0, 0.035) 1px,
+    rgba(77, 255, 136, 0.04) 0px,
+    rgba(77, 255, 136, 0.04) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -95,9 +95,9 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   background-size: 24px 24px;
 }
 
-/* Kinetic Gradient Sweep for Headings (Amber Phosphor CRT) */
+/* Kinetic Gradient Sweep for Headings (Pliny.gg inspired) */
 .kinetic-sweep {
-  background-image: linear-gradient(110deg, #ffb000 0%, #fef3c7 25%, #fbbf24 50%, #ffb000 100%);
+  background-image: linear-gradient(110deg, #4dff88 0%, #baffd9 25%, #61e7ff 50%, #4dff88 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -115,17 +115,17 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   }
 }
 
-/* Phosphor Glow Utilities (DEC VT220 Amber) */
+/* Phosphor Glow Utilities */
 .glow-green {
-  text-shadow: 0 0 12px rgba(255, 176, 0, 0.5), 0 0 24px rgba(255, 176, 0, 0.25);
+  text-shadow: 0 0 12px rgba(77, 255, 136, 0.45), 0 0 24px rgba(77, 255, 136, 0.2);
 }
 
 .glow-cyan {
-  text-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
+  text-shadow: 0 0 12px rgba(97, 231, 255, 0.45);
 }
 
 .box-glow-green {
-  box-shadow: 0 0 20px -5px rgba(255, 176, 0, 0.25);
+  box-shadow: 0 0 20px -5px rgba(77, 255, 136, 0.2);
 }
 
 /* Pliny-style cartouche ornament for section heads */
@@ -165,17 +165,17 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
 /* Grid Background */
 .grid-pattern {
   background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(38, 26, 10, 0.5) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(38, 26, 10, 0.5) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(30, 38, 52, 0.5) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(30, 38, 52, 0.5) 1px, transparent 1px);
 }
 
-/* Broken Computer Cursor-Matched Glitch for Hero Heading (Amber Phosphor CRT) */
+/* Broken Computer Cursor-Matched Glitch for Hero Heading */
 .text-glitch-cursor {
-  color: #ffb000;
+  color: #ffffff;
   position: relative;
   display: inline-block;
   animation: brokenGlitchTwitch 0.45s infinite;
-  text-shadow: 0 0 14px rgba(255, 176, 0, 0.4);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
 }
 
 .text-glitch-cursor::before,
@@ -191,19 +191,19 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
 }
 
 .text-glitch-cursor::before {
-  color: #fbbf24;
+  color: #00f0ff;
   transform: translate(-2px, 1px);
   animation: glitchRgbSplitCyan 0.35s steps(2) infinite;
   opacity: 0.85;
-  text-shadow: -1px 0 #fbbf24;
+  text-shadow: -1px 0 #00f0ff;
 }
 
 .text-glitch-cursor::after {
-  color: #f59e0b;
+  color: #ff0055;
   transform: translate(2px, -1px);
   animation: glitchRgbSplitRed 0.35s steps(2) infinite;
   opacity: 0.85;
-  text-shadow: 1px 0 #f59e0b;
+  text-shadow: 1px 0 #ff0055;
 }
 
 /* Hide scrollbar completely across all browsers */
