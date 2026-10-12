@@ -1,25 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, FileText, Phone, Copy, Check, Send, ShieldCheck } from "lucide-react";
+import { FileText, ShieldCheck } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export default function Contact() {
-  const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
-
-  const copyToClipboard = (text: string, type: "email" | "phone") => {
-    navigator.clipboard.writeText(text);
-    if (type === "email") {
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2000);
-    } else {
-      setCopiedPhone(true);
-      setTimeout(() => setCopiedPhone(false), 2000);
-    }
-  };
-
   return (
     <section id="contact" className="py-24 border-t border-cyber-border/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,10 +14,6 @@ export default function Contact() {
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Initiate Contact & Collaboration
           </h2>
-          <p className="mt-4 text-cyber-muted max-w-2xl text-sm sm:text-base leading-relaxed font-sans">
-            Actively seeking Cybersecurity Internships, Junior Threat Hunter, Red Team, and SOC Analyst
-            opportunities. Open to collaborating on open-source defensive and offensive tooling.
-          </p>
         </div>
 
         {/* Contact Matrix Card */}
@@ -40,85 +21,17 @@ export default function Contact() {
           {/* Subtle decorative accent */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-cyber-green/5 blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Left Column: Direct Communication Channels */}
+          <div className="items-center">
+            {/* Direct Communication Channels */}
             <div className="space-y-6 font-mono text-xs">
-              <div className="flex items-center gap-2 text-cyber-green text-sm font-bold tracking-wider">
+              <div className="flex items-center pb-5 gap-2 text-cyber-green text-sm font-bold tracking-wider">
                 <ShieldCheck className="w-4 h-4" />
                 <span>OPERATIONAL COMMUNICATION ENDPOINTS</span>
               </div>
-
-              {/* Email Endpoint */}
-              <div className="p-4 rounded-lg bg-cyber-bg border border-cyber-border space-y-2">
-                <div className="flex items-center justify-between text-cyber-dim">
-                  <span className="flex items-center gap-1.5">
-                    <Mail className="w-3.5 h-3.5 text-cyber-green" />
-                    PRIMARY EMAIL
-                  </span>
-                  <button
-                    onClick={() => copyToClipboard(PORTFOLIO_DATA.personal.email, "email")}
-                    className="hover:text-cyber-green flex items-center gap-1 transition-colors"
-                  >
-                    {copiedEmail ? (
-                      <>
-                        <Check className="w-3 h-3 text-cyber-green" />
-                        <span className="text-cyber-green">COPIED</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        <span>COPY</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-                <a
-                  href={`mailto:${PORTFOLIO_DATA.personal.email}`}
-                  className="text-sm font-bold text-white hover:text-cyber-green block transition-colors"
-                >
-                  {PORTFOLIO_DATA.personal.email}
-                </a>
-              </div>
-
-              {/* Phone Endpoint */}
-              <div className="p-4 rounded-lg bg-cyber-bg border border-cyber-border space-y-2">
-                <div className="flex items-center justify-between text-cyber-dim">
-                  <span className="flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-cyber-cyan" />
-                    TELEPHONE
-                  </span>
-                  <button
-                    onClick={() => copyToClipboard(PORTFOLIO_DATA.personal.phone, "phone")}
-                    className="hover:text-cyber-cyan flex items-center gap-1 transition-colors"
-                  >
-                    {copiedPhone ? (
-                      <>
-                        <Check className="w-3 h-3 text-cyber-cyan" />
-                        <span className="text-cyber-cyan">COPIED</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        <span>COPY</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-                <a
-                  href={`tel:${PORTFOLIO_DATA.personal.phone}`}
-                  className="text-sm font-bold text-white hover:text-cyber-cyan block transition-colors"
-                >
-                  {PORTFOLIO_DATA.personal.phone}
-                </a>
-              </div>
             </div>
 
-            {/* Right Column: External Presence & Résumé */}
+            {/* External Presence & Résumé */}
             <div className="space-y-4">
-              <div className="text-xs font-mono text-cyber-dim uppercase tracking-wider mb-2">
-                REPOSITORIES & PROFESSIONAL PROFILES
-              </div>
-
               {/* GitHub Link */}
               <a
                 href={PORTFOLIO_DATA.personal.github}

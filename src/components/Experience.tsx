@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, GraduationCap, Award, Users, CheckCircle2, Calendar, MapPin } from "lucide-react";
+import { Briefcase, GraduationCap, Award, Users, Calendar, MapPin } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export default function Experience() {
@@ -13,10 +13,6 @@ export default function Experience() {
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Industry Practice & Academic Grounding
           </h2>
-          <p className="mt-4 text-cyber-muted max-w-2xl text-sm sm:text-base leading-relaxed font-sans">
-            Software development experience directly reinforces my security engineering: understanding how
-            systems are built is essential to discovering how they can be breached and hardened.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

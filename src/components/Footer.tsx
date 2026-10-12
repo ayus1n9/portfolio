@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, ShieldCheck, Mail } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
@@ -15,15 +15,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-cyber-border/40">
           {/* Identity */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded bg-cyber-surface border border-cyber-border flex items-center justify-center text-cyber-green">
-              <ShieldCheck className="w-4 h-4 text-cyber-green" />
-            </div>
             <div>
               <div className="font-bold text-white tracking-widest text-sm">
-                AYUSH SINGH // AYUS1N9
-              </div>
-              <div className="text-[11px] text-cyber-dim">
-                CYBERSECURITY RESEARCH & TOOLMAKING
+                ayush singh
               </div>
             </div>
           </div>
@@ -50,7 +44,7 @@ export default function Footer() {
             </a>
             <a
               href={`mailto:${PORTFOLIO_DATA.personal.email}`}
-              className="hover:text-cyber-green transition-colors flex items-center gap-1.5"
+              className="hover:text-cyber-red transition-colors flex items-center gap-1.5"
             >
               <Mail className="w-4 h-4" />
               <span>EMAIL</span>
@@ -71,10 +65,10 @@ export default function Footer() {
         {/* Bottom Credits & Motto */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-cyber-dim text-[11px]">
           <div>
-            © {new Date().getFullYear()} Ayush Singh. All rights reserved. B.Tech Cybersecurity, VIT-AP University.
+            © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
-          <div className="tracking-widest text-cyber-green/80">
-            NON EST AD ASTRA MOLLIS E TERRIS VIA
+          <div className="tracking-widest text-cyber-red/80">
+            der anfang ist das ende. und das ende ist der anfang.
           </div>
         </div>
       </div>
