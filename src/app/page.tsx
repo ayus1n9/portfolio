@@ -11,12 +11,16 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CommandPalette from "@/components/CommandPalette";
+import GlitchCursor from "@/components/GlitchCursor";
 
 export default function Home() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-cyber-bg text-cyber-text relative selection:bg-cyber-green selection:text-cyber-bg">
+      {/* Broken Computer Distorted Glitch Mouse Pointer */}
+      <GlitchCursor />
+
       {/* Navigation */}
       <Navbar onOpenCommandPalette={() => setCommandPaletteOpen(true)} />
 

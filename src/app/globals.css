@@ -156,3 +156,117 @@ body {
   background-image: linear-gradient(to right, rgba(30, 38, 52, 0.5) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(30, 38, 52, 0.5) 1px, transparent 1px);
 }
+
+/* VIBGYOR Opening Sequence for AYUSH SINGH (Violet -> Indigo -> Blue -> Green -> Yellow -> Orange -> Red) */
+@keyframes vibgyorEntrance {
+  0% {
+    color: #8b5cf6; /* Violet */
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.7), 0 0 50px rgba(139, 92, 246, 0.35);
+  }
+  16.6% {
+    color: #4f46e5; /* Indigo */
+    text-shadow: 0 0 20px rgba(79, 70, 229, 0.7), 0 0 50px rgba(79, 70, 229, 0.35);
+  }
+  33.3% {
+    color: #0ea5e9; /* Blue */
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.7), 0 0 50px rgba(14, 165, 233, 0.35);
+  }
+  50% {
+    color: #10b981; /* Green */
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.7), 0 0 50px rgba(16, 185, 129, 0.35);
+  }
+  66.6% {
+    color: #facc15; /* Yellow */
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.7), 0 0 50px rgba(250, 204, 21, 0.35);
+  }
+  83.3% {
+    color: #fb923c; /* Orange */
+    text-shadow: 0 0 20px rgba(251, 146, 60, 0.7), 0 0 50px rgba(251, 146, 60, 0.35);
+  }
+  100% {
+    color: #ef4444; /* Red */
+    text-shadow: 0 0 25px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.4);
+  }
+}
+
+.name-vibgyor {
+  animation: vibgyorEntrance 4.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.name-vibgyor:hover {
+  text-shadow: 0 0 35px rgba(239, 68, 68, 0.95), 0 0 75px rgba(239, 68, 68, 0.5);
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6));
+}
+
+/* Custom Broken Computer Cursor Styles */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select,
+  body.has-custom-cursor [role="button"] {
+    cursor: none !important;
+  }
+}
+
+@keyframes brokenGlitchTwitch {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-2px, 1px) skewX(-1.5deg); }
+  20% { transform: translate(1px, -2px); }
+  30% { transform: translate(-1px, 2px) skewX(2deg); }
+  40% { transform: translate(2px, 0); }
+  50% { transform: translate(-2px, -1px); }
+  60% { transform: translate(0, 2px); }
+  70% { transform: translate(2px, 1px) skewX(-2deg); }
+  80% { transform: translate(-1px, -1px); }
+  90% { transform: translate(1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes brokenGlitchSlice {
+  0%, 82%, 100% {
+    clip-path: inset(0 0 0 0);
+  }
+  83% {
+    clip-path: inset(25% 0 45% 0);
+    transform: translate(-5px, 2px);
+  }
+  85% {
+    clip-path: inset(65% 0 10% 0);
+    transform: translate(5px, -2px);
+  }
+  87% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
+  }
+  92% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(-3px, 1px);
+  }
+  94% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes glitchRgbSplitCyan {
+  0%, 100% { transform: translate(-2px, 1px); opacity: 0.8; }
+  25% { transform: translate(-3.5px, -1.5px); opacity: 0.95; }
+  50% { transform: translate(-1px, 2.5px); opacity: 0.7; }
+  75% { transform: translate(-4px, 1px); opacity: 0.9; }
+}
+
+@keyframes glitchRgbSplitRed {
+  0%, 100% { transform: translate(2px, -1px); opacity: 0.8; }
+  25% { transform: translate(3.5px, 1.5px); opacity: 0.95; }
+  50% { transform: translate(1px, -2.5px); opacity: 0.7; }
+  75% { transform: translate(4px, -1px); opacity: 0.9; }
+}
+
+@keyframes glitchPulseLine {
+  0%, 100% { opacity: 0.3; height: 1px; }
+  50% { opacity: 0.9; height: 3px; }
+}
+
