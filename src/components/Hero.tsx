@@ -99,8 +99,11 @@ export default function Hero() {
           0_0
         </div>
 
-        {/* Monumental Name Wordmark with Cinzel / Editorial styling */}
-        <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-none select-none name-vibgyor">
+        {/* Monumental Name Wordmark with Cinzel / Editorial styling and cyber glitch distortion */}
+        <h1
+          data-text="AYUSH SINGH"
+          className="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-none select-none name-vibgyor-glitch"
+        >
           AYUSH SINGH
         </h1>
 

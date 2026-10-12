@@ -189,11 +189,191 @@ body {
   }
 }
 
-.name-vibgyor {
-  animation: vibgyorEntrance 4.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+/* VIBGYOR Opening Sequence with Cyber Distorted Glitch Effect */
+@keyframes vibgyorEntrance {
+  0% {
+    color: #8b5cf6; /* Violet */
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.7), 0 0 50px rgba(139, 92, 246, 0.35);
+  }
+  16.6% {
+    color: #4f46e5; /* Indigo */
+    text-shadow: 0 0 20px rgba(79, 70, 229, 0.7), 0 0 50px rgba(79, 70, 229, 0.35);
+  }
+  33.3% {
+    color: #0ea5e9; /* Blue */
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.7), 0 0 50px rgba(14, 165, 233, 0.35);
+  }
+  50% {
+    color: #10b981; /* Green */
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.7), 0 0 50px rgba(16, 185, 129, 0.35);
+  }
+  66.6% {
+    color: #facc15; /* Yellow */
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.7), 0 0 50px rgba(250, 204, 21, 0.35);
+  }
+  83.3% {
+    color: #fb923c; /* Orange */
+    text-shadow: 0 0 20px rgba(251, 146, 60, 0.7), 0 0 50px rgba(251, 146, 60, 0.35);
+  }
+  100% {
+    color: #ef4444; /* Red */
+    text-shadow: 0 0 25px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.4);
+  }
 }
 
-.name-vibgyor:hover {
+@keyframes nameGlitchJitter {
+  0%, 100% { transform: translate(0, 0) skew(0deg); }
+  2% { transform: translate(-3px, 1px) skew(-2.5deg); }
+  4% { transform: translate(3px, -1px) skew(1.5deg); }
+  6% { transform: translate(0, 0); }
+  32% { transform: translate(0, 0); }
+  34% { transform: translate(-4px, 2px) skew(-3deg); }
+  36% { transform: translate(3px, -2px) skew(2deg); }
+  38% { transform: translate(0, 0); }
+  68% { transform: translate(0, 0); }
+  70% { transform: translate(-3px, -1px) skew(2deg); }
+  72% { transform: translate(4px, 1px) skew(-2deg); }
+  74% { transform: translate(0, 0); }
+  92% { transform: translate(2px, -1px) skew(-1deg); }
+  94% { transform: translate(-2px, 2px) skew(1deg); }
+  96% { transform: translate(0, 0); }
+}
+
+@keyframes nameGlitchSlice1 {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    clip-path: inset(20% 0 55% 0);
+    transform: translate(-6px, -1px);
+    opacity: 0.9;
+  }
+  17% {
+    clip-path: inset(60% 0 15% 0);
+    transform: translate(5px, 2px);
+    opacity: 0.9;
+  }
+  19% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+  48% {
+    clip-path: inset(35% 0 40% 0);
+    transform: translate(-5px, 1px);
+    opacity: 0.85;
+  }
+  50% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(6px, -2px);
+    opacity: 0.95;
+  }
+  52% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+  80% {
+    clip-path: inset(75% 0 8% 0);
+    transform: translate(-7px, 2px);
+    opacity: 0.9;
+  }
+  82% {
+    clip-path: inset(25% 0 50% 0);
+    transform: translate(4px, -1px);
+    opacity: 0.85;
+  }
+  84% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+}
+
+@keyframes nameGlitchSlice2 {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  16% {
+    clip-path: inset(45% 0 30% 0);
+    transform: translate(6px, 2px);
+    opacity: 0.9;
+  }
+  18% {
+    clip-path: inset(12% 0 65% 0);
+    transform: translate(-5px, -1px);
+    opacity: 0.85;
+  }
+  20% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+  49% {
+    clip-path: inset(70% 0 10% 0);
+    transform: translate(5px, -2px);
+    opacity: 0.9;
+  }
+  51% {
+    clip-path: inset(15% 0 60% 0);
+    transform: translate(-6px, 1px);
+    opacity: 0.9;
+  }
+  53% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+  81% {
+    clip-path: inset(30% 0 45% 0);
+    transform: translate(6px, -1px);
+    opacity: 0.9;
+  }
+  83% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(-4px, 2px);
+    opacity: 0.85;
+  }
+  85% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+}
+
+.name-vibgyor-glitch {
+  position: relative;
+  display: inline-block;
+  animation: vibgyorEntrance 4.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             nameGlitchJitter 3.5s infinite ease-in-out;
+}
+
+.name-vibgyor-glitch::before,
+.name-vibgyor-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.name-vibgyor-glitch::before {
+  color: #00ffff;
+  text-shadow: -2px 0 #00ffff, 0 0 15px rgba(0, 255, 255, 0.6);
+  animation: nameGlitchSlice1 2.8s infinite ease-in-out;
+  mix-blend-mode: screen;
+}
+
+.name-vibgyor-glitch::after {
+  color: #ff0055;
+  text-shadow: 2px 0 #ff0055, 0 0 15px rgba(255, 0, 85, 0.6);
+  animation: nameGlitchSlice2 2.4s infinite ease-in-out;
+  mix-blend-mode: screen;
+}
+
+.name-vibgyor-glitch:hover {
+  animation: vibgyorEntrance 4.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             nameGlitchJitter 0.7s infinite ease-in-out;
   text-shadow: 0 0 35px rgba(239, 68, 68, 0.95), 0 0 75px rgba(239, 68, 68, 0.5);
   filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6));
 }
