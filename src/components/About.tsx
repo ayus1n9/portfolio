@@ -71,16 +71,16 @@ export default function About() {
       {/* Anchor for backwards compatibility */}
       <div id="about" className="absolute -top-12 left-0" />
 
-      {/* Emerald / Jade ambient glow */}
+      {/* Ambient Phosphor CRT Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/5 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/5 blur-[150px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="cartouche-badge mb-3 select-none text-emerald-400">02 // EDUCATION & EXPERIENCE</div>
+          <div className="cartouche-badge mb-3 select-none text-amber-400">02 // EDUCATION & EXPERIENCE</div>
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Academic Grounding & Industry Practice
           </h2>
@@ -89,32 +89,32 @@ export default function About() {
           </p>
         </div>
 
-        {/* Compact Cards Grid - Imperial Jade & Emerald Theme */}
+        {/* Compact Cards Grid - Amber Phosphor & Deep Black Theme */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {cards.map((card, i) => {
             const Icon = card.icon;
             return (
               <div
                 key={i}
-                className="bg-[#07130c]/90 border border-emerald-900/60 hover:border-emerald-400/50 p-6 sm:p-7 rounded-xl transition-all flex flex-col justify-between group hover:bg-[#091a10] shadow-lg hover:shadow-emerald-950/30"
+                className="bg-[#0a0805] border border-amber-900/50 hover:border-amber-400/50 p-6 sm:p-7 rounded-xl transition-all flex flex-col justify-between group hover:bg-[#120d07] shadow-lg hover:shadow-amber-950/20"
               >
                 <div>
                   {/* Top Bar */}
                   <div className="flex items-center justify-between text-[11px] font-mono mb-3">
-                    <span className="text-emerald-400 font-bold flex items-center gap-2">
+                    <span className="text-amber-400 font-bold flex items-center gap-2">
                       <Icon className="w-3.5 h-3.5" />
                       {card.identifier}
                     </span>
-                    <span className="text-emerald-300/70 px-2 py-0.5 rounded bg-[#04160c] border border-emerald-900/50">
+                    <span className="text-amber-300/80 px-2 py-0.5 rounded bg-[#160f08] border border-amber-900/50">
                       {card.period}
                     </span>
                   </div>
 
                   {/* Title & Subtitle */}
-                  <h4 className="text-lg sm:text-xl font-bold font-editorial text-white mb-1 group-hover:text-emerald-300 transition-colors">
+                  <h4 className="text-lg sm:text-xl font-bold font-editorial text-white mb-1 group-hover:text-amber-300 transition-colors">
                     {card.title}
                   </h4>
-                  <p className="text-xs font-mono text-teal-300/90 mb-3">
+                  <p className="text-xs font-mono text-amber-400/80 mb-3">
                     {card.subtitle}
                   </p>
 
@@ -127,7 +127,7 @@ export default function About() {
                   <ul className="space-y-2 mb-5 font-sans text-xs text-cyber-muted">
                     {card.highlights.map((item, hIdx) => (
                       <li key={hIdx} className="flex items-start gap-2">
-                        <span className="text-emerald-400 font-mono text-xs mt-0.5 select-none">▸</span>
+                        <span className="text-amber-400 font-mono text-xs mt-0.5 select-none">▸</span>
                         <span className="leading-relaxed">{item}</span>
                       </li>
                     ))}
@@ -135,11 +135,11 @@ export default function About() {
                 </div>
 
                 {/* Tech / Skill Badges */}
-                <div className="pt-4 border-t border-emerald-900/40 flex flex-wrap gap-1.5 font-mono">
+                <div className="pt-4 border-t border-amber-900/40 flex flex-wrap gap-1.5 font-mono">
                   {card.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2 py-0.5 rounded bg-[#04160c] text-emerald-300/80 group-hover:text-emerald-100 text-[10px] font-mono border border-emerald-900/60 transition-colors"
+                      className="px-2 py-0.5 rounded bg-[#140e07] text-amber-300/80 group-hover:text-amber-100 text-[10px] font-mono border border-amber-900/50 transition-colors"
                     >
                       {tag}
                     </span>

@@ -98,30 +98,30 @@ export default function SecurityNews() {
       {/* Anchor for media navigation */}
       <div id="media" className="absolute -top-12 left-0" />
 
-      {/* Background radial gradient glow - Ultraviolet Media Theme */}
+      {/* Background radial gradient glow - Amber Phosphor Theme */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-purple-600/5 blur-[170px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-amber-500/5 blur-[170px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Pliny/Media Cartouche Header */}
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="cartouche-badge text-sm sm:text-base select-none tracking-widest text-purple-400 font-mono">
+          <div className="cartouche-badge text-sm sm:text-base select-none tracking-widest text-amber-400 font-mono">
             05 // MEDIA
           </div>
 
           {/* Daily Refresh Telemetry Subtitle */}
-          <div className="mt-3 flex items-center gap-2 font-mono text-[11px] text-purple-400/60 select-none">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-            <span className="text-purple-300/80">{dailyData.lastUpdatedFormatted}</span>
+          <div className="mt-3 flex items-center gap-2 font-mono text-[11px] text-amber-400/60 select-none">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span className="text-amber-300/80">{dailyData.lastUpdatedFormatted}</span>
             <span>•</span>
             <button
               onClick={handleManualRefresh}
               title="Sync latest 24h dispatch"
-              className="inline-flex items-center gap-1 text-purple-400/70 hover:text-purple-300 transition-colors ml-1"
+              className="inline-flex items-center gap-1 text-amber-400/70 hover:text-amber-300 transition-colors ml-1"
             >
-              <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-purple-400" : ""}`} />
+              <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-amber-400" : ""}`} />
               <span className="text-[10px]">SYNC</span>
             </button>
           </div>
@@ -147,7 +147,7 @@ export default function SecurityNews() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${card.outlet}: ${card.title}`}
-              className="flex-none w-[285px] sm:w-[310px] md:w-[325px] bg-[#0a0d13] border border-cyber-border/80 hover:border-cyber-green/50 rounded-xl overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-cyber-green/10 cursor-pointer block text-inherit no-underline select-none"
+              className="flex-none w-[285px] sm:w-[310px] md:w-[325px] bg-[#0a0805] border border-amber-900/50 hover:border-amber-400/50 rounded-xl overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-amber-950/20 cursor-pointer block text-inherit no-underline select-none"
             >
               {/* Top Accent Rim */}
               <div
@@ -185,7 +185,7 @@ export default function SecurityNews() {
                       loading="lazy"
                     />
                     {/* Gradient vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d13] via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0805] via-transparent to-transparent opacity-80" />
 
                     {/* Stamped outlet badge overlay at bottom-left */}
                     <div className="absolute bottom-3 left-3">

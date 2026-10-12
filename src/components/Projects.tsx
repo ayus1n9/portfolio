@@ -12,46 +12,46 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 border-t border-cyber-border/40 relative overflow-hidden">
-      {/* Red Team Crimson ambient glow */}
+      {/* Ambient Phosphor CRT Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-rose-500/5 blur-[160px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/5 blur-[160px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="cartouche-badge mb-3 select-none text-rose-400">03 // FEATURED PROJECTS</div>
+          <div className="cartouche-badge mb-3 select-none text-amber-400">03 // FEATURED PROJECTS</div>
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Security Tooling & Investigative Code
           </h2>
         </div>
 
-        {/* Secondary Projects Grid (Asymmetric List/Cards) - Red Team Crimson Theme */}
+        {/* Secondary Projects Grid (Asymmetric List/Cards) - Amber Phosphor & Deep Black Theme */}
         {secondaryProjects.length > 0 && (
           <div>
             <div className="flex items-center gap-3 mb-6 font-mono text-xs">
-              <span className="font-bold text-rose-400/70 tracking-wider uppercase">
+              <span className="font-bold text-amber-400/80 tracking-wider uppercase">
                 ADDITIONAL SECURITY IMPLEMENTATIONS & LABS:
               </span>
-              <div className="h-px flex-1 bg-rose-950/60" />
+              <div className="h-px flex-1 bg-amber-950/60" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {secondaryProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="bg-[#0f070b]/90 border border-rose-950/70 hover:border-rose-500/50 p-6 rounded-lg transition-all flex flex-col justify-between group hover:bg-[#160910] shadow-lg hover:shadow-rose-950/30"
+                  className="bg-[#0a0805] border border-amber-900/50 hover:border-amber-400/50 p-6 rounded-lg transition-all flex flex-col justify-between group hover:bg-[#120d07] shadow-lg hover:shadow-amber-950/20"
                 >
                   <div>
-                    <div className="flex items-center justify-between text-[11px] font-mono text-rose-400/70 mb-2">
-                      <span className="text-rose-400 font-bold">{project.identifier}</span>
+                    <div className="flex items-center justify-between text-[11px] font-mono text-amber-400/70 mb-2">
+                      <span className="text-amber-400 font-bold">{project.identifier}</span>
                     </div>
 
-                    <h4 className="text-lg font-bold font-editorial text-white mb-1 group-hover:text-rose-300 transition-colors">
+                    <h4 className="text-lg font-bold font-editorial text-white mb-1 group-hover:text-amber-300 transition-colors">
                       {project.title}
                     </h4>
-                    <p className="text-xs font-mono text-orange-300/90 mb-3">
+                    <p className="text-xs font-mono text-amber-400/80 mb-3">
                       {project.subtitle}
                     </p>
 
@@ -59,7 +59,7 @@ export default function Projects() {
                       {project.technologies.slice(0, 4).map((tech, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 rounded bg-[#1a0812] text-rose-300/80 text-[10px] font-mono border border-rose-900/50"
+                          className="px-2 py-0.5 rounded bg-[#160f08] text-amber-300/80 text-[10px] font-mono border border-amber-900/50"
                         >
                           {tech}
                         </span>
@@ -67,10 +67,10 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-rose-950/50 flex items-center justify-between font-mono">
+                  <div className="pt-4 border-t border-amber-950/50 flex items-center justify-between font-mono">
                     <button
                       onClick={() => setActiveModalProject(project)}
-                      className="text-xs text-rose-400 hover:underline flex items-center gap-1 font-bold"
+                      className="text-xs text-amber-400 hover:text-amber-300 hover:underline flex items-center gap-1 font-bold"
                     >
                       <span>Details & Specs</span>
                       <span>→</span>
@@ -80,7 +80,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-rose-400/60 hover:text-white transition-colors"
+                      className="text-amber-400/60 hover:text-white transition-colors"
                       aria-label={`${project.title} on GitHub`}
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -98,9 +98,9 @@ export default function Projects() {
             href={PORTFOLIO_DATA.personal.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded bg-[#12070e] border border-rose-900/60 hover:border-rose-400 text-rose-200 hover:text-rose-400 font-mono text-xs font-bold tracking-wider transition-all shadow-md"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded bg-[#0a0805] border border-amber-900/60 hover:border-amber-400 text-amber-200 hover:text-amber-400 font-mono text-xs font-bold tracking-wider transition-all shadow-md"
           >
-            <Code2 className="w-4 h-4 text-rose-400" />
+            <Code2 className="w-4 h-4 text-amber-400" />
             <span>VIEW ALL REPOSITORIES ON GITHUB</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
