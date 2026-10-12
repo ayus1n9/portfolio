@@ -21,7 +21,7 @@ export default function Navbar({ onOpenCommandPalette }: NavbarProps) {
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Arsenal", href: "#arsenal" },
-    { label: "Global News", href: "#news" },
+    { label: "Media", href: "#news" },
     { label: "Contact", href: "#contact" },
   ];
 
