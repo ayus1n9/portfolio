@@ -22,63 +22,21 @@ const ASCII_HERO_MOBILE = `    ___   __  __  __  __   _____   __  __
  ___/ / _/ /   / /|  / / /_/ /  / __  /  
 /____/ /___/  /_/ |_/  \\____/  /_/ /_/   `;
 
-const GLYPHS = "01/\\_|X#*?%&+<>";
-
-function scrambleAscii(text: string, progress: number): string {
-  if (progress >= 1) return text;
-  const lines = text.split("\n");
-  const maxCol = Math.max(...lines.map((l) => l.length));
-  return lines
-    .map((line) => {
-      return line
-        .split("")
-        .map((ch, col) => {
-          if (ch === " ") return " ";
-          const threshold = (col / maxCol) * 0.75;
-          if (progress >= threshold + 0.25) return ch;
-          return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-        })
-        .join("");
-    })
-    .join("\n");
-}
-
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [displayTextDesktop, setDisplayTextDesktop] = useState(ASCII_HERO_DESKTOP);
-  const [displayTextMobile, setDisplayTextMobile] = useState(ASCII_HERO_MOBILE);
-  const isDecryptingRef = useRef(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
-  const triggerDecrypt = useCallback(() => {
-    if (isDecryptingRef.current) return;
-    isDecryptingRef.current = true;
-
-    const totalSteps = 18;
-    const intervalMs = 40;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / totalSteps;
-      setDisplayTextDesktop(scrambleAscii(ASCII_HERO_DESKTOP, progress));
-      setDisplayTextMobile(scrambleAscii(ASCII_HERO_MOBILE, progress));
-
-      if (step >= totalSteps) {
-        clearInterval(timer);
-        setDisplayTextDesktop(ASCII_HERO_DESKTOP);
-        setDisplayTextMobile(ASCII_HERO_MOBILE);
-        isDecryptingRef.current = false;
-      }
-    }, intervalMs);
-  }, []);
-
-  // Run on mount
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      triggerDecrypt();
-    }, 250);
-    return () => clearTimeout(timeout);
-  }, [triggerDecrypt]);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!bannerRef.current) return;
+    const rect = bannerRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+    setIsHovered(true);
+  };
 
   // Subtle ambient constellation particle canvas
   useEffect(() => {
@@ -176,26 +134,47 @@ export default function Hero() {
         <h1 className="mb-6 select-none flex justify-center items-center w-full">
           <span className="sr-only">AYUSH SINGH</span>
           <div
-            onMouseEnter={triggerDecrypt}
-            className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden cursor-pointer group transition-transform active:scale-[0.99]"
-            title="Hover to decrypt sequence again"
+            ref={bannerRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden cursor-crosshair group"
           >
             {/* Ambient soft glow behind letters */}
             <div className="absolute inset-0 bg-cyber-green/[0.04] blur-2xl rounded-full pointer-events-none -z-10" />
+
+            {/* Option 4: Interactive Mouse Spotlight Ambient Glow */}
+            <div
+              className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300 -z-10"
+              style={{
+                opacity: isHovered ? 1 : 0,
+                background: `radial-gradient(240px circle at ${mousePos.x}px ${mousePos.y}px, rgba(77, 255, 136, 0.22), rgba(97, 231, 255, 0.08) 40%, transparent 80%)`,
+              }}
+            />
+
+            {/* Option 4: Character Highlight Spotlight Overlay */}
+            <div
+              className="pointer-events-none absolute inset-0 transition-opacity duration-150 z-10"
+              style={{
+                opacity: isHovered ? 1 : 0,
+                background: `radial-gradient(130px circle at ${mousePos.x}px ${mousePos.y}px, rgba(186, 255, 217, 0.5), rgba(77, 255, 136, 0.15) 50%, transparent 75%)`,
+                mixBlendMode: "screen",
+              }}
+            />
 
             {/* Desktop & Tablet Banner (86 cols) */}
             <pre
               aria-hidden="true"
               className="hidden md:block font-mono text-[9px] lg:text-[11px] xl:text-[12px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.45)]"
             >
-              {displayTextDesktop}
+              {ASCII_HERO_DESKTOP}
             </pre>
             {/* Mobile & Small Tablet Banner (46 cols) */}
             <pre
               aria-hidden="true"
               className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.45)]"
             >
-              {displayTextMobile}
+              {ASCII_HERO_MOBILE}
             </pre>
           </div>
         </h1>
