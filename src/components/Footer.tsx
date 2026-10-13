@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import DecryptText from "./DecryptText";
 import VisitorTelemetry from "./VisitorTelemetry";
 
 const VERSES = [
@@ -29,42 +30,33 @@ export default function Footer() {
     let isMounted = true;
     let timerId: NodeJS.Timeout;
 
-    const runSequence = () => {
-      // 1. Show English (index 2) after 1.8s
+    // Display durations for each verse while hovered:
+    // German (initial hover): 300ms before starting translation
+    // Hindi: 1800ms
+    // English: 2200ms
+    const displayDurations = [300, 1800, 2200];
+
+    const triggerNext = (currentIdx: number) => {
+      if (!isMounted) return;
+      setIsFading(true);
       timerId = setTimeout(() => {
         if (!isMounted) return;
-        setIsFading(true);
-        setTimeout(() => {
-          if (!isMounted) return;
-          setVerseIndex(2);
-          setIsFading(false);
+        const nextIdx = (currentIdx + 1) % VERSES.length;
+        setVerseIndex(nextIdx);
+        setIsFading(false);
 
-          // 2. Show Sanskrit (index 1) after another 2.2s
-          timerId = setTimeout(() => {
-            if (!isMounted) return;
-            setIsFading(true);
-            setTimeout(() => {
-              if (!isMounted) return;
-              setVerseIndex(1);
-              setIsFading(false);
+        // When looping back to German, give it 1800ms to be read
+        const nextDuration = nextIdx === 0 ? 1800 : displayDurations[nextIdx];
 
-              // 3. Return to German (index 0) after another 2.2s
-              timerId = setTimeout(() => {
-                if (!isMounted) return;
-                setIsFading(true);
-                setTimeout(() => {
-                  if (!isMounted) return;
-                  setVerseIndex(0);
-                  setIsFading(false);
-                }, 300);
-              }, 2200);
-            }, 300);
-          }, 2200);
-        }, 300);
-      }, 1800);
+        timerId = setTimeout(() => {
+          triggerNext(nextIdx);
+        }, nextDuration);
+      }, 200);
     };
 
-    runSequence();
+    timerId = setTimeout(() => {
+      triggerNext(0);
+    }, displayDurations[0]);
 
     return () => {
       isMounted = false;
@@ -74,33 +66,23 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-cyber-border/60 bg-cyber-bg py-12 relative z-10 font-mono text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Top Header: Identity & Node Status */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-cyber-border/40">
-          <div>
-            <div className="font-bold text-white tracking-widest text-sm uppercase">
-              ayush singh
-            </div>
-            <div className="text-cyber-dim text-[11px] tracking-wider mt-0.5">
-              SECURITY RESEARCH & TOOLMAKING INFRASTRUCTURE
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-cyber-border/40">
+          {/* Identity with Option 3 Animation */}
+          <div className="flex items-center gap-3">
+            <div>
+              <div className="font-bold text-white tracking-widest text-sm">
+                <DecryptText text="ayush singh" />
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-[11px] text-cyber-muted font-mono">
-            <span className="w-2 h-2 rounded-full bg-cyber-green animate-pulse" />
-            <span className="text-cyber-green font-bold">NODE // ACTIVE</span>
-            <span className="text-cyber-border">•</span>
-            <span className="text-cyber-dim">AMARAVATI, IN</span>
-          </div>
-        </div>
-
-        {/* Hacker Visitor Telemetry Strip: IPv4, IPv6, DNS, Hardware & Security Profiles */}
-        <div>
+          {/* Visitor Telemetry: Pure details / info metrics without boxes */}
           <VisitorTelemetry />
         </div>
 
         {/* Bottom Credits, ASCII Sculpture & Interactive Motto */}
-        <div className="pt-4 relative flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px] min-h-[120px] lg:min-h-[440px]">
+        <div className="pt-8 relative flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px] min-h-[120px] lg:min-h-[440px]">
           {/* Left: Copyright */}
           <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3 select-none relative z-10 flex-1">
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.

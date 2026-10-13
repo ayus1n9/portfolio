@@ -12,8 +12,7 @@ export default function Contact() {
       icon: GithubIcon,
       target: "_blank",
       rel: "noopener noreferrer",
-      handle: "github.com/ayus1n9",
-      accent: "hover:border-cyber-green/70 hover:shadow-[0_0_30px_rgba(0,255,102,0.25)] text-cyber-green",
+      accent: "hover:border-cyber-green/70 hover:shadow-[0_0_30px_rgba(0,255,102,0.25)] text-white hover:text-cyber-green",
       borderColor: "border-cyber-border",
     },
     {
@@ -22,8 +21,7 @@ export default function Contact() {
       icon: Mail,
       target: undefined,
       rel: undefined,
-      handle: PORTFOLIO_DATA.personal.email,
-      accent: "hover:border-cyber-green/70 hover:shadow-[0_0_30px_rgba(0,255,102,0.25)] text-cyber-green",
+      accent: "hover:border-cyber-red/70 hover:shadow-[0_0_30px_rgba(255,51,102,0.25)] text-white hover:text-cyber-red",
       borderColor: "border-cyber-border",
     },
     {
@@ -32,8 +30,7 @@ export default function Contact() {
       icon: LinkedinIcon,
       target: "_blank",
       rel: "noopener noreferrer",
-      handle: "linkedin.com/in/ayus1n9",
-      accent: "hover:border-cyber-cyan/70 hover:shadow-[0_0_30px_rgba(0,229,255,0.25)] text-cyber-cyan",
+      accent: "hover:border-cyber-cyan/70 hover:shadow-[0_0_30px_rgba(0,229,255,0.25)] text-white hover:text-cyber-cyan",
       borderColor: "border-cyber-border",
     },
   ];
@@ -70,20 +67,11 @@ export default function Contact() {
                   target={item.target}
                   rel={item.rel}
                   aria-label={item.name}
-                  className={`group relative bg-cyber-raised/60 border ${item.borderColor} ${item.accent} rounded-xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 transform hover:-translate-y-1.5`}
+                  className={`group relative bg-cyber-raised/60 border ${item.borderColor} ${item.accent} rounded-xl p-8 flex items-center justify-center text-center transition-all duration-300 transform hover:-translate-y-1.5`}
                 >
-                  <div className="p-4 rounded-xl bg-black/40 border border-cyber-border/60 group-hover:border-cyber-green/40 transition-colors mb-4 flex items-center justify-center">
+                  <div className="p-4 rounded-xl bg-black/40 border border-cyber-border/60 group-hover:border-cyber-green/40 transition-colors flex items-center justify-center">
                     <Icon className="w-12 h-12 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
                   </div>
-                  <span className="font-mono text-sm font-bold tracking-widest text-white group-hover:text-cyber-green transition-colors uppercase">
-                    {item.name}
-                  </span>
-                  <span className="font-mono text-[10px] text-cyber-dim group-hover:text-cyber-muted transition-colors mt-1 truncate max-w-[180px]">
-                    {item.handle}
-                  </span>
-                  <span className="absolute top-3 right-3 text-cyber-dim group-hover:text-white transition-colors text-xs font-mono">
-                    ↗
-                  </span>
                 </a>
               );
             })}
