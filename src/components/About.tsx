@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { Briefcase, GraduationCap, Award, Users } from "lucide-react";
+import AboutModal, { AboutCardData } from "./AboutModal";
 
 export default function About() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [activeModalCard, setActiveModalCard] = useState<AboutCardData | null>(null);
   const cards = [
     {
       identifier: "EXP-01 // PRODUCTION APPSEC",
@@ -89,26 +90,23 @@ export default function About() {
         </div>
 
         {/* Compact Cards Grid matching Featured Projects styling */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {cards.map((card, i) => {
             const Icon = card.icon;
-            const isExpanded = expandedIndex === i;
             return (
               <div
                 key={i}
                 tabIndex={0}
-                role="region"
-                aria-label={card.title}
-                onClick={() => setExpandedIndex(isExpanded ? null : i)}
+                role="button"
+                aria-label={`View details for ${card.title}`}
+                onClick={() => setActiveModalCard(card)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    setExpandedIndex(isExpanded ? null : i);
+                    setActiveModalCard(card);
                   }
                 }}
-                className={`bg-cyber-surface/70 border ${
-                  isExpanded ? "border-cyber-green/60 bg-cyber-surface shadow-cyber-green/5" : "border-cyber-border"
-                } hover:border-cyber-green/40 p-6 sm:p-7 rounded-xl transition-all duration-300 flex flex-col justify-between group hover:bg-cyber-surface shadow-lg cursor-pointer focus:outline-none`}
+                className="bg-cyber-surface/70 border border-cyber-border hover:border-cyber-green/40 p-6 sm:p-7 rounded-xl transition-all flex flex-col justify-between group hover:bg-cyber-surface shadow-lg cursor-pointer focus:outline-none focus:border-cyber-green/50"
               >
                 <div>
                   {/* Top Bar */}
@@ -126,12 +124,12 @@ export default function About() {
                   <h4 className="text-lg sm:text-xl font-bold font-editorial text-white mb-1 group-hover:text-cyber-green transition-colors">
                     {card.title}
                   </h4>
-                  <p className="text-xs font-mono text-cyber-cyan mb-3">
+                  <p className="text-xs font-mono text-cyber-cyan mb-4">
                     {card.subtitle}
                   </p>
 
                   {/* Tech / Skill Badges */}
-                  <div className="flex flex-wrap gap-1.5 font-mono mb-3">
+                  <div className="flex flex-wrap gap-1.5 font-mono mb-4">
                     {card.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
@@ -141,43 +139,23 @@ export default function About() {
                       </span>
                     ))}
                   </div>
-
-                  {/* Collapsible Details: Summary & Highlights */}
-                  <div className={`dossier-collapse ${isExpanded ? "is-expanded" : ""}`}>
-                    <div>
-                      <div className="pt-3 pb-1 border-t border-cyber-border/40 my-2">
-                        {/* Concise summary */}
-                        <p className="text-xs text-cyber-muted font-sans leading-relaxed mb-3">
-                          {card.summary}
-                        </p>
-
-                        {/* Key Highlights */}
-                        <ul className="space-y-2 mb-2 font-sans text-xs text-cyber-muted">
-                          {card.highlights.map((item, hIdx) => (
-                            <li key={hIdx} className="flex items-start gap-2">
-                              <span className="text-cyber-green font-mono text-xs mt-0.5 select-none">▸</span>
-                              <span className="leading-relaxed">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
-                {/* Bottom Hint / Action Bar matching Featured Projects */}
-                <div className="pt-3.5 border-t border-cyber-border/50 flex items-center justify-between font-mono text-xs mt-auto">
-                  <div className="text-cyber-green flex items-center gap-1.5 font-bold text-[11px] sm:text-xs">
-                    <span>Details & Highlights</span>
+                {/* Bottom Action Bar matching Featured Projects */}
+                <div className="pt-4 border-t border-cyber-border/50 flex items-center justify-between font-mono text-xs mt-auto">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveModalCard(card);
+                    }}
+                    className="text-xs text-cyber-green hover:underline flex items-center gap-1.5 font-bold"
+                  >
+                    <span>Details & Specs</span>
                     <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-                  </div>
+                  </button>
+
                   <span className="text-[10px] font-mono text-cyber-dim group-hover:text-cyber-cyan transition-colors">
-                    <span className={isExpanded ? "hidden" : "group-hover:hidden"}>
-                      {card.highlights.length} KEY HIGHLIGHTS
-                    </span>
-                    <span className={isExpanded ? "inline text-cyber-cyan" : "hidden group-hover:inline"}>
-                      EXPANDED
-                    </span>
+                    {card.highlights.length} HIGHLIGHTS
                   </span>
                 </div>
               </div>
@@ -185,6 +163,12 @@ export default function About() {
           })}
         </div>
       </div>
+
+      {/* Deep Inspection Modal */}
+      <AboutModal
+        card={activeModalCard}
+        onClose={() => setActiveModalCard(null)}
+      />
     </section>
   );
 }
