@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
 import { getDailyMediaNews, MediaCard } from "@/data/mediaNewsData";
-import DecryptText from "./DecryptText";
 
 export default function SecurityNews() {
   const [dailyData, setDailyData] = useState(() => getDailyMediaNews());
@@ -112,7 +111,7 @@ export default function SecurityNews() {
             05 // MEDIA
           </div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000] mb-3">
-            <DecryptText text="Live Cyber Threat Dispatch" />
+            Live Cyber Threat Dispatch
           </h2>
 
           {/* Daily Refresh Telemetry Subtitle */}

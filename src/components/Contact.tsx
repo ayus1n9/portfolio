@@ -1,11 +1,43 @@
 "use client";
 
-import { FileText, ShieldCheck } from "lucide-react";
+import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
-import DecryptText from "./DecryptText";
 
 export default function Contact() {
+  const contactLinks = [
+    {
+      name: "GitHub",
+      href: PORTFOLIO_DATA.personal.github,
+      icon: GithubIcon,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      handle: "github.com/ayus1n9",
+      accent: "hover:border-cyber-green/70 hover:shadow-[0_0_30px_rgba(0,255,102,0.25)] text-cyber-green",
+      borderColor: "border-cyber-border",
+    },
+    {
+      name: "Email",
+      href: `mailto:${PORTFOLIO_DATA.personal.email}`,
+      icon: Mail,
+      target: undefined,
+      rel: undefined,
+      handle: PORTFOLIO_DATA.personal.email,
+      accent: "hover:border-cyber-green/70 hover:shadow-[0_0_30px_rgba(0,255,102,0.25)] text-cyber-green",
+      borderColor: "border-cyber-border",
+    },
+    {
+      name: "LinkedIn",
+      href: PORTFOLIO_DATA.personal.linkedin,
+      icon: LinkedinIcon,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      handle: "linkedin.com/in/ayus1n9",
+      accent: "hover:border-cyber-cyan/70 hover:shadow-[0_0_30px_rgba(0,229,255,0.25)] text-cyber-cyan",
+      borderColor: "border-cyber-border",
+    },
+  ];
+
   return (
     <section id="contact" className="py-24 border-t border-cyber-border/40 relative overflow-hidden">
       {/* Phosphor Signal ambient glow */}
@@ -19,80 +51,42 @@ export default function Contact() {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">06 // TRANSMISSION CHANNEL</div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000]">
-            <DecryptText text="Initiate Contact & Collaboration" />
+            Initiate Contact & Collaboration
           </h2>
         </div>
 
-        {/* Contact Matrix Card */}
-        <div className="max-w-4xl mx-auto bg-cyber-surface border border-cyber-border rounded-xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        {/* Contact Matrix - Three Large Icons Only */}
+        <div className="max-w-3xl mx-auto bg-cyber-surface/90 border border-cyber-border rounded-xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
           {/* Subtle decorative accent */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-cyber-green/5 blur-3xl pointer-events-none" />
 
-          <div className="items-center">
-            {/* Direct Communication Channels */}
-            <div className="space-y-6 font-mono text-xs">
-              <div className="flex items-center pb-5 gap-2 text-cyber-green text-sm font-bold tracking-wider">
-                <ShieldCheck className="w-4 h-4" />
-                <span>OPERATIONAL COMMUNICATION ENDPOINTS</span>
-              </div>
-            </div>
-
-            {/* External Presence & Résumé */}
-            <div className="space-y-4">
-              {/* GitHub Link */}
-              <a
-                href={PORTFOLIO_DATA.personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-lg bg-cyber-raised border border-cyber-border hover:border-cyber-green/50 flex items-center justify-between font-mono text-xs transition-all group"
-              >
-                <div className="flex items-center gap-3">
-                  <GithubIcon className="w-5 h-5 text-cyber-green group-hover:scale-110 transition-transform" />
-                  <div>
-                    <div className="font-bold text-white group-hover:text-cyber-green transition-colors">
-                      GitHub Profile
-                    </div>
-                    <div className="text-cyber-dim text-[11px]">github.com/ayus1n9</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+            {contactLinks.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target={item.target}
+                  rel={item.rel}
+                  aria-label={item.name}
+                  className={`group relative bg-cyber-raised/60 border ${item.borderColor} ${item.accent} rounded-xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 transform hover:-translate-y-1.5`}
+                >
+                  <div className="p-4 rounded-xl bg-black/40 border border-cyber-border/60 group-hover:border-cyber-green/40 transition-colors mb-4 flex items-center justify-center">
+                    <Icon className="w-12 h-12 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
                   </div>
-                </div>
-                <span className="text-cyber-dim group-hover:text-white transition-colors">↗</span>
-              </a>
-
-              {/* LinkedIn Link */}
-              <a
-                href={PORTFOLIO_DATA.personal.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-lg bg-cyber-raised border border-cyber-border hover:border-cyber-cyan/50 flex items-center justify-between font-mono text-xs transition-all group"
-              >
-                <div className="flex items-center gap-3">
-                  <LinkedinIcon className="w-5 h-5 text-cyber-cyan group-hover:scale-110 transition-transform" />
-                  <div>
-                    <div className="font-bold text-white group-hover:text-cyber-cyan transition-colors">
-                      LinkedIn Connection
-                    </div>
-                    <div className="text-cyber-dim text-[11px]">linkedin.com/in/ayus1n9</div>
-                  </div>
-                </div>
-                <span className="text-cyber-dim group-hover:text-white transition-colors">↗</span>
-              </a>
-
-              {/* Download Résumé Button */}
-              <a
-                href={PORTFOLIO_DATA.personal.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 px-4 rounded-lg bg-cyber-green text-cyber-bg font-mono font-bold text-xs tracking-wider hover:bg-cyber-green-bright transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyber-green/10"
-              >
-                <FileText className="w-4 h-4" />
-                <span>DOWNLOAD OFFICIAL RÉSUMÉ (PDF)</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Footer note */}
-          <div className="mt-8 pt-6 border-t border-cyber-border/60 text-center font-mono text-xs text-cyber-dim">
-            <span>PGP/SSH SIGNED SESSIONS • AUDIT READY • TIMEZONE: IST (UTC+05:30)</span>
+                  <span className="font-mono text-sm font-bold tracking-widest text-white group-hover:text-cyber-green transition-colors uppercase">
+                    {item.name}
+                  </span>
+                  <span className="font-mono text-[10px] text-cyber-dim group-hover:text-cyber-muted transition-colors mt-1 truncate max-w-[180px]">
+                    {item.handle}
+                  </span>
+                  <span className="absolute top-3 right-3 text-cyber-dim group-hover:text-white transition-colors text-xs font-mono">
+                    ↗
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Flag, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
-import DecryptText from "./DecryptText";
 
 export default function Arsenal() {
   const [activeCategory, setActiveCategory] = useState<number>(0);
@@ -22,7 +21,7 @@ export default function Arsenal() {
         <div className="flex flex-col items-center text-center mb-12">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">04 // SECURITY ARSENAL</div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000]">
-            <DecryptText text="Offensive & Defensive Tooling Matrix" />
+            Offensive & Defensive Tooling Matrix
           </h2>
         </div>
 
