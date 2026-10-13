@@ -31,10 +31,10 @@ export default function Footer() {
     let timerId: NodeJS.Timeout;
 
     // Display durations for each verse while hovered:
-    // German: 700ms before starting translation
-    // Hindi: 1600ms
-    // English: 2000ms
-    const displayDurations = [700, 1600, 2000];
+    // German (initial hover): 300ms before starting translation
+    // Hindi: 1800ms
+    // English: 2200ms
+    const displayDurations = [300, 1800, 2200];
 
     const triggerNext = (currentIdx: number) => {
       if (!isMounted) return;
@@ -45,9 +45,12 @@ export default function Footer() {
         setVerseIndex(nextIdx);
         setIsFading(false);
 
+        // When looping back to German, give it 1800ms to be read
+        const nextDuration = nextIdx === 0 ? 1800 : displayDurations[nextIdx];
+
         timerId = setTimeout(() => {
           triggerNext(nextIdx);
-        }, displayDurations[nextIdx]);
+        }, nextDuration);
       }, 200);
     };
 
@@ -104,13 +107,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Credits, ASCII Sculpture & Motto */}
-        <div className="pt-8 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px]">
-          <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3 select-none">
+        {/* Bottom Credits, ASCII Sculpture & Interactive Motto */}
+        <div className="pt-8 relative flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px] min-h-[120px] lg:min-h-[440px]">
+          {/* Left: Copyright */}
+          <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3 select-none relative z-10 flex-1">
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
 
-          <div className="order-1 lg:order-2 flex items-center justify-center select-none pointer-events-none">
+          {/* Center: ASCII Sculpture - Absolutely centered on desktop to guarantee zero layout shifts */}
+          <div className="order-1 lg:order-2 lg:absolute lg:left-1/2 lg:bottom-0 lg:-translate-x-1/2 flex items-center justify-center select-none pointer-events-none z-0">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] flex items-center justify-center">
               <img
                 src="/ascii-fate.gif"
@@ -121,41 +126,43 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Interactive Multilingual Motto / Return to Top Button */}
-          <button
-            type="button"
-            onClick={scrollToTop}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => setTimeout(() => setIsHovered(false), 2500)}
-            onFocus={() => setIsHovered(true)}
-            onBlur={() => setIsHovered(false)}
-            className="order-3 lg:order-3 text-center lg:text-right lg:pb-3 group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2rem] flex items-center justify-center lg:justify-end"
-            title="Return to top"
-            aria-label="Return to top"
-          >
-            <span
-              className={`inline-flex items-center gap-2 font-mono tracking-widest transition-all duration-300 select-none ${
-                isHovered
-                  ? "text-cyber-green footer-motto-glow"
-                  : "text-cyber-red/80 hover:text-cyber-red"
-              } ${
-                isFading
-                  ? "opacity-0 blur-[2px] transform translate-y-0.5"
-                  : "opacity-100 blur-0 transform translate-y-0"
-              }`}
+          {/* Right: Interactive Multilingual Motto / Return to Top Button */}
+          <div className="order-3 lg:order-3 relative z-10 flex-1 flex justify-center lg:justify-end lg:pb-3">
+            <button
+              type="button"
+              onClick={scrollToTop}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onTouchStart={() => setIsHovered(true)}
+              onTouchEnd={() => setTimeout(() => setIsHovered(false), 3000)}
+              onFocus={() => setIsHovered(true)}
+              onBlur={() => setIsHovered(false)}
+              className="group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2.5rem] w-full sm:w-auto min-w-[280px] sm:min-w-[380px] lg:min-w-[430px] flex items-center justify-center lg:justify-end px-3 py-1.5 rounded-lg hover:bg-cyber-surface/40 select-none"
+              title="Click to return to top"
+              aria-label="Return to top"
             >
-              <span>{VERSES[verseIndex]}</span>
-              <ArrowUp
-                className={`w-3.5 h-3.5 transition-all duration-300 flex-shrink-0 ${
+              <span
+                className={`inline-flex items-center gap-2 font-mono tracking-widest transition-all duration-300 pointer-events-none ${
                   isHovered
-                    ? "opacity-100 text-cyber-green -translate-y-0.5"
-                    : "opacity-0 text-cyber-red/40 translate-y-0"
+                    ? "footer-motto-active"
+                    : "text-cyber-red/80 hover:text-cyber-red"
+                } ${
+                  isFading
+                    ? "opacity-0 blur-[2px] transform translate-y-0.5"
+                    : "opacity-100 blur-0 transform translate-y-0"
                 }`}
-              />
-            </span>
-          </button>
+              >
+                <span>{VERSES[verseIndex]}</span>
+                <ArrowUp
+                  className={`w-3.5 h-3.5 transition-all duration-300 flex-shrink-0 ${
+                    isHovered
+                      ? "opacity-100 text-cyber-green -translate-y-0.5"
+                      : "opacity-0 text-cyber-red/40 translate-y-0"
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </footer>

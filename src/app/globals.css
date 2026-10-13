@@ -136,6 +136,11 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   text-shadow: 0 0 12px rgba(77, 255, 136, 0.6), 0 0 24px rgba(77, 255, 136, 0.3);
 }
 
+.footer-motto-active {
+  color: #4dff88 !important;
+  text-shadow: 0 0 12px rgba(77, 255, 136, 0.6), 0 0 24px rgba(77, 255, 136, 0.3);
+}
+
 /* Pliny-style cartouche ornament for section heads */
 .cartouche-badge {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
