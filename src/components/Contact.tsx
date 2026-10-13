@@ -3,6 +3,7 @@
 import { FileText, ShieldCheck } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import DecryptText from "./DecryptText";
 
 export default function Contact() {
   return (
@@ -18,7 +19,7 @@ export default function Contact() {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">06 // TRANSMISSION CHANNEL</div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000]">
-            Initiate Contact & Collaboration
+            <DecryptText text="Initiate Contact & Collaboration" />
           </h2>
         </div>
 

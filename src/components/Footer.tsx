@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowUp, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import DecryptText from "./DecryptText";
 
 const VERSES = [
   "der anfang ist das ende. und das ende ist der anfang.",
@@ -72,7 +73,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <div>
               <div className="font-bold text-white tracking-widest text-sm">
-                ayush singh
+                <DecryptText text="ayush singh" />
               </div>
             </div>
           </div>
