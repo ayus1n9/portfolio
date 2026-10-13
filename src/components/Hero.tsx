@@ -4,31 +4,23 @@ import { useEffect, useRef } from "react";
 import { Terminal, ArrowUpRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
-const ASCII_HERO_DESKTOP = `/------------------------------------------------------------------------------------------\\
-|  *                                                                                    *  |
-|      ___   __  __  __  __   _____   __  __       _____   ____   _   __  ______   __  __  |
-|     /   |  \\ \\/ / / / / /  / ___/  / / / /      / ___/  /  _/  / | / / / ____/  / / / /  |
-|    / /| |   \\  / / / / /   \\__ \\  / /_/ /       \\__ \\   / /   /  |/ / / / __   / /_/ /   |
-|   / ___ |   / / / /_/ /   ___/ / / __  /       ___/ / _/ /   / /|  / / /_/ /  / __  /    |
-|  /_/  |_|  /_/  \\____/   /____/ /_/ /_/       /____/ /___/  /_/ |_/  \\____/  /_/ /_/     |
-|  *                                                                                    *  |
-\\------------------------------------------------------------------------------------------/`;
+const ASCII_HERO_DESKTOP = `    ___   __  __  __  __   _____   __  __       _____   ____   _   __  ______   __  __
+   /   |  \\ \\/ / / / / /  / ___/  / / / /      / ___/  /  _/  / | / / / ____/  / / / /
+  / /| |   \\  / / / / /   \\__ \\  / /_/ /       \\__ \\   / /   /  |/ / / / __   / /_/ / 
+ / ___ |   / / / /_/ /   ___/ / / __  /       ___/ / _/ /   / /|  / / /_/ /  / __  /  
+/_/  |_|  /_/  \\____/   /____/ /_/ /_/       /____/ /___/  /_/ |_/  \\____/  /_/ /_/   `;
 
-const ASCII_HERO_MOBILE = `/----------------------------------------------\\
-|  *                                        *  |
-|    ___   __  __  __  __   _____   __  __     |
-|   /   |  \\ \\/ / / / / /  / ___/  / / / /     |
-|  / /| |   \\  / / / / /   \\__ \\  / /_/ /      |
-| / ___ |   / / / /_/ /   ___/ / / __  /       |
-|/_/  |_|  /_/  \\____/   /____/ /_/ /_/        |
-|                                              |
-|   _____   ____   _   __  ______   __  __     |
-|  / ___/  /  _/  / | / / / ____/  / / / /     |
-|  \\__ \\   / /   /  |/ / / / __   / /_/ /      |
-| ___/ / _/ /   / /|  / / /_/ /  / __  /       |
-|/____/ /___/  /_/ |_/  \\____/  /_/ /_/        |
-|  *                                        *  |
-\\----------------------------------------------/`;
+const ASCII_HERO_MOBILE = `    ___   __  __  __  __   _____   __  __
+   /   |  \\ \\/ / / / / /  / ___/  / / / /
+  / /| |   \\  / / / / /   \\__ \\  / /_/ / 
+ / ___ |   / / / /_/ /   ___/ / / __  /  
+/_/  |_|  /_/  \\____/   /____/ /_/ /_/   
+
+   _____   ____   _   __  ______   __  __
+  / ___/  /  _/  / | / / / ____/  / / / /
+  \\__ \\   / /   /  |/ / / / __   / /_/ / 
+ ___/ / _/ /   / /|  / / /_/ /  / __  /  
+/____/ /___/  /_/ |_/  \\____/  /_/ /_/   `;
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -125,10 +117,13 @@ export default function Hero() {
           0_0
         </div>
 
-        {/* Monumental Name Banner in Authentic Terminal ASCII Art */}
+        {/* Monumental Name Banner in Pure Terminal ASCII Art (Borderless with Translucent Blurred Backdrop) */}
         <h1 className="mb-6 select-none flex justify-center items-center w-full">
           <span className="sr-only">AYUSH SINGH</span>
-          <div className="p-2 sm:p-4 rounded-lg bg-black/80 border border-cyber-green/30 backdrop-blur-sm shadow-[0_0_35px_rgba(77,255,136,0.12)] max-w-full overflow-hidden">
+          <div className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden">
+            {/* Ambient soft glow behind letters */}
+            <div className="absolute inset-0 bg-cyber-green/[0.04] blur-2xl rounded-full pointer-events-none -z-10" />
+
             {/* Desktop & Tablet Banner (86 cols) */}
             <pre
               aria-hidden="true"
