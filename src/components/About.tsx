@@ -84,9 +84,6 @@ export default function About() {
           <h2 className="text-3xl sm:text-5xl font-bold font-editorial text-white tracking-tight">
             Academic Grounding & Industry Practice
           </h2>
-          <p className="text-xs sm:text-sm font-mono text-cyber-muted mt-3 max-w-2xl">
-            Hands-on application security and software engineering paired with rigorous computer science foundations.
-          </p>
         </div>
 
         {/* Compact Cards Grid matching Featured Projects styling */}

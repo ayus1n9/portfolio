@@ -119,7 +119,7 @@ export default function Hero() {
         {/* Refined CTAs */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-16 w-full font-mono text-xs">
           <a
-            href="#lab"
+            href="#cli"
             className="px-5 py-3.5 rounded bg-cyber-surface border border-cyber-border hover:border-cyber-green/50 text-cyber-green tracking-wider transition-all flex items-center gap-2 hover:bg-cyber-raised"
           >
             <Terminal className="w-3.5 h-3.5" />
