@@ -114,13 +114,13 @@ export default function Footer() {
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
 
-          {/* Center: ASCII Sculpture - Absolutely centered on desktop to guarantee zero layout shifts */}
-          <div className="order-1 lg:order-2 lg:absolute lg:left-1/2 lg:bottom-0 lg:-translate-x-1/2 flex items-center justify-center select-none pointer-events-none z-0">
+          {/* Center: ASCII Sculpture - Centered with inset-x-0 to prevent stacking context or layout shifts */}
+          <div className="order-1 lg:order-2 lg:absolute lg:inset-x-0 lg:bottom-0 flex items-center justify-center select-none pointer-events-none z-0">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] flex items-center justify-center">
               <img
                 src="/ascii-fate.gif"
                 alt="Cyber ASCII Sculpture"
-                className="w-full h-full object-contain mix-blend-screen pointer-events-none select-none"
+                className="w-full h-full object-contain pointer-events-none select-none"
                 draggable={false}
               />
             </div>
@@ -137,8 +137,7 @@ export default function Footer() {
               onTouchEnd={() => setTimeout(() => setIsHovered(false), 3000)}
               onFocus={() => setIsHovered(true)}
               onBlur={() => setIsHovered(false)}
-              className="group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2.5rem] w-full sm:w-auto min-w-[280px] sm:min-w-[380px] lg:min-w-[430px] flex items-center justify-center lg:justify-end px-3 py-1.5 rounded-lg hover:bg-cyber-surface/40 select-none"
-              title="Click to return to top"
+              className="group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2rem] py-1 flex items-center justify-center lg:justify-end select-none"
               aria-label="Return to top"
             >
               <span
