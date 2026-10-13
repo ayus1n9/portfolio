@@ -70,27 +70,27 @@ export default function About() {
   ];
 
   return (
-    <section id="experience" className="py-24 border-t border-cyber-border/40 relative">
+    <section id="experience" className="py-24 border-t border-cyber-border/40 relative overflow-hidden">
       {/* Anchor for backwards compatibility */}
       <div id="about" className="absolute -top-12 left-0" />
 
       {/* Cyber Green ambient glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyber-green/5 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[350px] bg-cyber-green/5 blur-[150px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">02 // EDUCATION & EXPERIENCE</div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000]">
+          <h2 className="text-xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-3 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000] max-w-full text-center">
             Academic Grounding & Industry Practice
           </h2>
         </div>
 
         {/* Compact Cards Grid matching Featured Projects styling */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {cards.map((card, i) => {
             const Icon = card.icon;
             return (

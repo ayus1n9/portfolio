@@ -33,14 +33,14 @@ export default function Navbar({ onOpenCommandPalette }: NavbarProps) {
           : "bg-transparent border-b border-cyber-border/30 py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 flex items-center justify-center">
         {/* Centered Nav Links */}
-        <nav className="flex items-center gap-6 sm:gap-8 justify-center" aria-label="Main Navigation">
+        <nav className="flex items-center gap-3 sm:gap-6 md:gap-8 justify-center overflow-x-auto no-scrollbar max-w-full px-1" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-xs uppercase font-mono tracking-wider text-cyber-muted hover:text-cyber-green transition-colors py-1 relative group"
+              className="text-[11px] sm:text-xs uppercase font-mono tracking-wider text-cyber-muted hover:text-cyber-green transition-colors py-1 relative group shrink-0"
             >
               {link.label}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-green transition-all duration-200 group-hover:w-full" />

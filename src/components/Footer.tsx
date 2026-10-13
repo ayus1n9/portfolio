@@ -65,9 +65,9 @@ export default function Footer() {
   }, [isHovered]);
 
   return (
-    <footer className="border-t border-cyber-border/60 bg-cyber-bg py-12 relative z-10 font-mono text-xs">
+    <footer className="border-t border-cyber-border/60 bg-cyber-bg py-12 relative z-10 font-mono text-xs overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-cyber-border/40">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 pb-8 border-b border-cyber-border/40 text-center md:text-left">
           {/* Identity with Option 3 Animation */}
           <div className="flex items-center gap-3">
             <div>
