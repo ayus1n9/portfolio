@@ -87,7 +87,7 @@ export default function VisitorTelemetry() {
   }, []);
 
   return (
-    <div className="flex flex-wrap items-center justify-start md:justify-end gap-x-3 sm:gap-x-4 gap-y-1 font-mono text-[11px] text-cyber-dim select-none">
+    <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-3 sm:gap-x-4 gap-y-1.5 font-mono text-[11px] text-cyber-dim select-none max-w-full text-center md:text-right">
       <span className="flex items-center gap-1.5">
         <span className={`w-1.5 h-1.5 rounded-full bg-cyber-green ${info.loaded ? "animate-pulse" : "animate-ping"}`} />
         <span className="text-cyber-green font-bold">IP:</span>
