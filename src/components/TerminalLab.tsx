@@ -77,7 +77,7 @@ Try: 'whoami', 'nettrace', 'toposec', 'email-analyzer', 'threatlens'`,
   Handle:         ${PORTFOLIO_DATA.personal.handle}
   University:     VIT-AP University (B.Tech Computer Science, Cybersecurity Specialization 2023-2027)
   Experience:     Vectr (Web Developer – AppSec & API Hardening, 2023-2026)
-  Focus Areas:    Red Teaming, Network Forensics, SOC Enrichment Automation, API Security, Cloud Security, DevSecOps
+  Focus Areas:    Red Teaming, Network Forensics, SOC Enrichment Automation, AI Security & Red Teaming, API Security, Cloud Security, DevSecOps
   Location:       ${PORTFOLIO_DATA.personal.location}
   GitHub:         ${PORTFOLIO_DATA.personal.github}`;
         resType = "success";

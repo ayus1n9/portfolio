@@ -123,7 +123,7 @@ export default function Hero() {
             className="px-5 py-3.5 rounded bg-cyber-surface border border-cyber-border hover:border-cyber-green/50 text-cyber-green tracking-wider transition-all flex items-center gap-2 hover:bg-cyber-raised"
           >
             <Terminal className="w-3.5 h-3.5" />
-            <span>INTERACTIVE LAB</span>
+            <span>whoami</span>
           </a>
 
           <a
