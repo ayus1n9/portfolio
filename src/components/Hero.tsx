@@ -4,6 +4,32 @@ import { useEffect, useRef } from "react";
 import { Terminal, ArrowUpRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
+const ASCII_HERO_DESKTOP = `/------------------------------------------------------------------------------------------\\
+|  *                                                                                    *  |
+|      ___   __  __  __  __   _____   __  __       _____   ____   _   __  ______   __  __  |
+|     /   |  \\ \\/ / / / / /  / ___/  / / / /      / ___/  /  _/  / | / / / ____/  / / / /  |
+|    / /| |   \\  / / / / /   \\__ \\  / /_/ /       \\__ \\   / /   /  |/ / / / __   / /_/ /   |
+|   / ___ |   / / / /_/ /   ___/ / / __  /       ___/ / _/ /   / /|  / / /_/ /  / __  /    |
+|  /_/  |_|  /_/  \\____/   /____/ /_/ /_/       /____/ /___/  /_/ |_/  \\____/  /_/ /_/     |
+|  *                                                                                    *  |
+\\------------------------------------------------------------------------------------------/`;
+
+const ASCII_HERO_MOBILE = `/----------------------------------------------\\
+|  *                                        *  |
+|    ___   __  __  __  __   _____   __  __     |
+|   /   |  \\ \\/ / / / / /  / ___/  / / / /     |
+|  / /| |   \\  / / / / /   \\__ \\  / /_/ /      |
+| / ___ |   / / / /_/ /   ___/ / / __  /       |
+|/_/  |_|  /_/  \\____/   /____/ /_/ /_/        |
+|                                              |
+|   _____   ____   _   __  ______   __  __     |
+|  / ___/  /  _/  / | / / / ____/  / / / /     |
+|  \\__ \\   / /   /  |/ / / / __   / /_/ /      |
+| ___/ / _/ /   / /|  / / /_/ /  / __  /       |
+|/____/ /___/  /_/ |_/  \\____/  /_/ /_/        |
+|  *                                        *  |
+\\----------------------------------------------/`;
+
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -99,16 +125,25 @@ export default function Hero() {
           0_0
         </div>
 
-        {/* Monumental Name Banner using the provided screenshot */}
+        {/* Monumental Name Banner in Authentic Terminal ASCII Art */}
         <h1 className="mb-6 select-none flex justify-center items-center w-full">
           <span className="sr-only">AYUSH SINGH</span>
-          <img
-            src="/ayush-singh.png"
-            alt="AYUSH SINGH"
-            width={622}
-            height={166}
-            className="w-full max-w-[622px] h-auto object-contain drop-shadow-[0_0_30px_rgba(77,255,136,0.18)]"
-          />
+          <div className="p-2 sm:p-4 rounded-lg bg-black/80 border border-cyber-green/30 backdrop-blur-sm shadow-[0_0_35px_rgba(77,255,136,0.12)] max-w-full overflow-hidden">
+            {/* Desktop & Tablet Banner (86 cols) */}
+            <pre
+              aria-hidden="true"
+              className="hidden md:block font-mono text-[9px] lg:text-[11px] xl:text-[12px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.4)]"
+            >
+              {ASCII_HERO_DESKTOP}
+            </pre>
+            {/* Mobile & Small Tablet Banner (46 cols) */}
+            <pre
+              aria-hidden="true"
+              className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.4)]"
+            >
+              {ASCII_HERO_MOBILE}
+            </pre>
+          </div>
         </h1>
 
         {/* Tagline Row */}
