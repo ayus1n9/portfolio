@@ -122,19 +122,22 @@ export default function Hero() {
           <span className="sr-only">AYUSH SINGH</span>
           <div className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden">
             {/* Ambient soft glow behind letters */}
-            <div className="absolute inset-0 bg-cyber-green/[0.05] blur-2xl rounded-full pointer-events-none -z-10 crt-backdrop-pulse" />
+            <div className="absolute inset-0 bg-cyber-green/[0.04] blur-2xl rounded-full pointer-events-none -z-10" />
+
+            {/* Option 2: Terminal Scanline Sweep Beam */}
+            <div className="crt-scanline-sweep" aria-hidden="true" />
 
             {/* Desktop & Tablet Banner (86 cols) */}
             <pre
               aria-hidden="true"
-              className="hidden md:block font-mono text-[9px] lg:text-[11px] xl:text-[12px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar crt-phosphor-pulse"
+              className="hidden md:block font-mono text-[9px] lg:text-[11px] xl:text-[12px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.45)]"
             >
               {ASCII_HERO_DESKTOP}
             </pre>
             {/* Mobile & Small Tablet Banner (46 cols) */}
             <pre
               aria-hidden="true"
-              className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar crt-phosphor-pulse"
+              className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.45)]"
             >
               {ASCII_HERO_MOBILE}
             </pre>

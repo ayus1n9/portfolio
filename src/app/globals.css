@@ -321,4 +321,46 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   will-change: opacity, transform;
 }
 
+/* Terminal Scanline Sweep Animation (Option 2) */
+@keyframes scanlineSweep {
+  0% {
+    top: -30%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 115%;
+    opacity: 0;
+  }
+}
+
+.crt-scanline-sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg, transparent 0%, rgba(77, 255, 136, 0.22) 50%, transparent 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: scanlineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: top, opacity;
+}
+
+.crt-scanline-sweep::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: rgba(186, 255, 217, 0.9);
+  box-shadow: 0 0 10px #4dff88, 0 0 20px #4dff88;
+}
+
+
 
