@@ -137,7 +137,7 @@ export default function Footer() {
               onTouchEnd={() => setTimeout(() => setIsHovered(false), 3000)}
               onFocus={() => setIsHovered(true)}
               onBlur={() => setIsHovered(false)}
-              className="group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2rem] py-1 flex items-center justify-center lg:justify-end select-none"
+              className="group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2.5rem] w-full sm:w-[440px] lg:w-[440px] py-1 flex items-center justify-center lg:justify-end bg-transparent select-none"
               aria-label="Return to top"
             >
               <span

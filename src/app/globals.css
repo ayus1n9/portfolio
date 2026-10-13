@@ -139,6 +139,7 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
 .footer-motto-active {
   color: #4dff88 !important;
   text-shadow: 0 0 12px rgba(77, 255, 136, 0.6), 0 0 24px rgba(77, 255, 136, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* Pliny-style cartouche ornament for section heads */
