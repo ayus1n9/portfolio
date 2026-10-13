@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Terminal, ArrowUpRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import DecryptText from "./DecryptText";
 
 const ASCII_HERO_DESKTOP = `    ___   __  __  __  __   _____   __  __       _____   ____   _   __  ______   __  __
    /   |  \\ \\/ / / / / /  / ___/  / / / /      / ___/  /  _/  / | / / / ____/  / / / /
@@ -172,11 +173,11 @@ export default function Hero() {
 
         {/* Tagline Row */}
         <div className="font-mono text-xs sm:text-sm md:text-base font-semibold tracking-widest text-cyber-green uppercase mb-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span>INVESTIGATING THREATS</span>
+          <DecryptText text="INVESTIGATING THREATS" className="hover:text-white transition-colors" />
           <span className="text-cyber-dim">•</span>
-          <span>BUILDING TOOLS</span>
+          <DecryptText text="BUILDING TOOLS" className="hover:text-white transition-colors" />
           <span className="text-cyber-dim">•</span>
-          <span>ENGINEERING SECURITY</span>
+          <DecryptText text="ENGINEERING SECURITY" className="hover:text-white transition-colors" />
         </div>
 
         {/* Refined CTAs */}
