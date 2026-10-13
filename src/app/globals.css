@@ -17,6 +17,10 @@ html {
   background-color: #07090b;
   color: #f1f5f9;
   color-scheme: dark;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -24,8 +28,11 @@ body {
   color: #f1f5f9;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   position: relative;
   min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
 }
 
 ::selection {
@@ -145,15 +152,19 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
 /* Pliny-style cartouche ornament for section heads */
 .cartouche-badge {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #4dff88 !important;
   text-shadow: 0 0 10px rgba(77, 255, 136, 0.55), 0 0 20px rgba(77, 255, 136, 0.25);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .cartouche-badge::before {
@@ -168,6 +179,20 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   color: #4dff88 !important;
   opacity: 1;
   text-shadow: 0 0 8px rgba(77, 255, 136, 0.6);
+}
+
+@media (max-width: 640px) {
+  .cartouche-badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    gap: 0.25rem;
+  }
+  .cartouche-badge::before {
+    content: "•-⦑";
+  }
+  .cartouche-badge::after {
+    content: "⦒-•";
+  }
 }
 
 /* Terminal Cursor Blink */

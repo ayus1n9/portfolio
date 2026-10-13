@@ -28,7 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-cyber-bg text-cyber-text relative selection:bg-cyber-green selection:text-cyber-bg">
+    <main className="min-h-screen bg-cyber-bg text-cyber-text relative selection:bg-cyber-green selection:text-cyber-bg w-full max-w-full overflow-x-hidden">
       {/* Broken Computer Distorted Glitch Mouse Pointer */}
       <GlitchCursor />
 

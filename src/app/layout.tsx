@@ -1,5 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Ayush Singh | Cybersecurity Researcher & Toolmaker",
@@ -34,9 +40,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth overflow-x-hidden w-full max-w-full">
       <head />
-      <body className="bg-cyber-bg text-cyber-text antialiased selection:bg-cyber-green selection:text-cyber-bg min-h-screen">
+      <body className="bg-cyber-bg text-cyber-text antialiased selection:bg-cyber-green selection:text-cyber-bg min-h-screen overflow-x-hidden w-full max-w-full">
         <div className="scanlines-ambient" aria-hidden="true" />
         <div className="noise-overlay" aria-hidden="true" />
         {children}
