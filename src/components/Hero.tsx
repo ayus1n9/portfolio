@@ -116,23 +116,23 @@ export default function Hero() {
 
       {/* Radial glow background */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-cyber-green/5 blur-[140px] rounded-full pointer-events-none"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[380px] bg-cyber-green/5 blur-[140px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center w-full">
         {/* Tactical Status Pill */}
         <div className="cartouche-badge mb-6 text-xs sm:text-sm select-none text-cyber-green">
           0_0
         </div>
 
         {/* Monumental Name Banner in Pure Terminal ASCII Art (Option 5: Mainframe Line-by-Line Stream-In) */}
-        <h1 className="mb-6 select-none flex justify-center items-center w-full">
+        <h1 className="mb-6 select-none flex justify-center items-center w-full max-w-full">
           <span className="sr-only">AYUSH SINGH</span>
           <div
             key={streamKey}
             onMouseEnter={replayStream}
-            className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden cursor-pointer group transition-transform active:scale-[0.99]"
+            className="relative px-2 py-1.5 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden cursor-pointer group transition-transform active:scale-[0.99]"
             title="Hover to replay line stream-in"
           >
             {/* Ambient soft glow behind letters */}
@@ -156,7 +156,7 @@ export default function Hero() {
             {/* Mobile & Small Tablet Banner (46 cols) */}
             <pre
               aria-hidden="true"
-              className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar"
+              className="block md:hidden font-mono text-[6.5px] xs:text-[8px] sm:text-[9.5px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar max-w-full"
             >
               {MOBILE_LINES.map((line, idx) => (
                 <span
@@ -172,7 +172,7 @@ export default function Hero() {
         </h1>
 
         {/* Tagline Row */}
-        <div className="font-mono text-xs sm:text-sm md:text-base font-semibold tracking-widest text-cyber-green uppercase mb-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <div className="font-mono text-[11px] sm:text-sm md:text-base font-semibold tracking-wider sm:tracking-widest text-cyber-green uppercase mb-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 max-w-full px-2 text-center">
           <DecryptText text="INVESTIGATING THREATS" className="hover:text-white transition-colors" />
           <span className="text-cyber-dim">•</span>
           <DecryptText text="BUILDING TOOLS" className="hover:text-white transition-colors" />
@@ -181,7 +181,7 @@ export default function Hero() {
         </div>
 
         {/* Refined CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-16 w-full font-mono text-xs">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-16 w-full max-w-full font-mono text-xs px-2">
           <a
             href="#cli"
             className="px-5 py-3.5 rounded bg-cyber-surface border border-cyber-border hover:border-cyber-green/50 text-cyber-green tracking-wider transition-all flex items-center gap-2 hover:bg-cyber-raised"

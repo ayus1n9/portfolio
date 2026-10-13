@@ -16,12 +16,12 @@ export default function TerminalLab() {
   const [history, setHistory] = useState<HistoryEntry[]>([
     {
       command: "welcome",
-      output: `======================================================================
-  Target Environment: Linux (x86_64) | Active Host: us3r@home
-  All simulated routines strictly mirror actual repository logic.
-======================================================================
-Type 'help' to inspect available security tool simulations.
-Try: 'whoami', 'nettrace', 'toposec', 'email-analyzer', 'threatlens'`,
+      output: `==================================================
+  Target Environment: Linux (x86_64) | Host: us3r@home
+  Simulated routines strictly mirror repository logic.
+==================================================
+Type 'help' to inspect available security simulations.
+Try: 'whoami', 'nettrace', 'toposec', 'threatlens'`,
       type: "standard",
     },
   ]);
@@ -305,23 +305,23 @@ Containment Directives:
     <section id="lab" className="py-24 border-t border-cyber-border/40 relative overflow-hidden">
       {/* Cyber Green ambient glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyber-green/5 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[350px] bg-cyber-green/5 blur-[150px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Cyber Green Cartouche */}
-        <div className="flex flex-col items-center text-center mb-12">
+        <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">01 // CLI</div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000]">
+          <h2 className="text-xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-3 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000] max-w-full text-center">
             Interactive Security Terminal
           </h2>
         </div>
 
         {/* Terminal Window Frame */}
-        <div className="bg-black/90 border border-cyber-border rounded-lg shadow-2xl overflow-hidden font-mono max-w-5xl mx-auto">
+        <div className="bg-black/90 border border-cyber-border rounded-lg shadow-2xl overflow-hidden font-mono w-full max-w-5xl mx-auto">
           {/* Title Bar */}
-          <div className="px-4 py-3 bg-cyber-raised border-b border-cyber-border flex items-center justify-between">
+          <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-cyber-raised border-b border-cyber-border flex items-center justify-between gap-2 overflow-hidden">
             <div className="flex items-center gap-2.5">
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -375,17 +375,17 @@ Containment Directives:
           {/* Terminal Screen Body */}
           <div
             ref={terminalScreenRef}
-            className="p-4 sm:p-6 min-h-[380px] max-h-[520px] overflow-y-auto space-y-4 text-xs sm:text-sm text-cyber-text"
+            className="p-3 sm:p-6 min-h-[340px] sm:min-h-[380px] max-h-[520px] overflow-y-auto overflow-x-hidden space-y-4 text-xs sm:text-sm text-cyber-text w-full max-w-full"
             onClick={() => inputRef.current?.focus()}
           >
             {history.map((item, idx) => (
               <div key={idx} className="space-y-1">
-                <div className="flex items-center gap-2 text-cyber-muted">
+                <div className="flex items-center gap-2 text-cyber-muted text-[11px] sm:text-xs">
                   <span className="text-cyber-green font-bold">us3r@home:~$</span>
                   <span className="text-white font-semibold">{item.command}</span>
                 </div>
                 <pre
-                  className={`whitespace-pre-wrap font-mono leading-relaxed pl-4 border-l ${
+                  className={`whitespace-pre-wrap break-words break-all [overflow-wrap:anywhere] max-w-full font-mono leading-relaxed pl-3 sm:pl-4 border-l text-[11px] sm:text-xs md:text-sm ${
                     item.type === "alert"
                       ? "text-cyber-amber border-cyber-amber/40"
                       : item.type === "success"
