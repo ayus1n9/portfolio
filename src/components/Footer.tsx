@@ -1,13 +1,65 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { ArrowUp, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
+const VERSES = [
+  "der anfang ist das ende. und das ende ist der anfang.",
+  "अंतः अस्ति प्रारंभः",
+  "the end is the beginning. and the beginning is the end.",
+];
+
 export default function Footer() {
+  const [verseIndex, setVerseIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFading, setIsFading] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    if (!isHovered) {
+      setIsFading(false);
+      setVerseIndex(0);
+      return;
+    }
+
+    let isMounted = true;
+    let timerId: NodeJS.Timeout;
+
+    // Display durations for each verse while hovered:
+    // German: 700ms before starting translation
+    // Hindi: 1600ms
+    // English: 2000ms
+    const displayDurations = [700, 1600, 2000];
+
+    const triggerNext = (currentIdx: number) => {
+      if (!isMounted) return;
+      setIsFading(true);
+      timerId = setTimeout(() => {
+        if (!isMounted) return;
+        const nextIdx = (currentIdx + 1) % VERSES.length;
+        setVerseIndex(nextIdx);
+        setIsFading(false);
+
+        timerId = setTimeout(() => {
+          triggerNext(nextIdx);
+        }, displayDurations[nextIdx]);
+      }, 200);
+    };
+
+    timerId = setTimeout(() => {
+      triggerNext(0);
+    }, displayDurations[0]);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timerId);
+    };
+  }, [isHovered]);
 
   return (
     <footer className="border-t border-cyber-border/60 bg-cyber-bg py-12 relative z-10 font-mono text-xs">
@@ -50,21 +102,11 @@ export default function Footer() {
               <span>EMAIL</span>
             </a>
           </div>
-
-          {/* Back to top */}
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 rounded bg-cyber-surface border border-cyber-border hover:border-cyber-green text-cyber-dim hover:text-cyber-green transition-all"
-            aria-label="Back to top of page"
-          >
-            <span>RETURN TO TOP</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
         </div>
 
         {/* Bottom Credits, ASCII Sculpture & Motto */}
         <div className="pt-8 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px]">
-          <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3">
+          <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3 select-none">
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
 
@@ -79,9 +121,41 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="order-3 lg:order-3 tracking-widest text-cyber-red/80 text-center lg:text-right lg:pb-3">
-            der anfang ist das ende. und das ende ist der anfang.
-          </div>
+          {/* Interactive Multilingual Motto / Return to Top Button */}
+          <button
+            type="button"
+            onClick={scrollToTop}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={() => setIsHovered(true)}
+            onTouchEnd={() => setTimeout(() => setIsHovered(false), 2500)}
+            onFocus={() => setIsHovered(true)}
+            onBlur={() => setIsHovered(false)}
+            className="order-3 lg:order-3 text-center lg:text-right lg:pb-3 group cursor-pointer focus:outline-none transition-all duration-300 min-h-[2rem] flex items-center justify-center lg:justify-end"
+            title="Return to top"
+            aria-label="Return to top"
+          >
+            <span
+              className={`inline-flex items-center gap-2 font-mono tracking-widest transition-all duration-300 select-none ${
+                isHovered
+                  ? "text-cyber-green footer-motto-glow"
+                  : "text-cyber-red/80 hover:text-cyber-red"
+              } ${
+                isFading
+                  ? "opacity-0 blur-[2px] transform translate-y-0.5"
+                  : "opacity-100 blur-0 transform translate-y-0"
+              }`}
+            >
+              <span>{VERSES[verseIndex]}</span>
+              <ArrowUp
+                className={`w-3.5 h-3.5 transition-all duration-300 flex-shrink-0 ${
+                  isHovered
+                    ? "opacity-100 text-cyber-green -translate-y-0.5"
+                    : "opacity-0 text-cyber-red/40 translate-y-0"
+                }`}
+              />
+            </span>
+          </button>
         </div>
       </div>
     </footer>

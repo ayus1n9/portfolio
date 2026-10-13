@@ -128,6 +128,14 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   box-shadow: 0 0 20px -5px rgba(77, 255, 136, 0.2);
 }
 
+.glow-red {
+  text-shadow: 0 0 12px rgba(248, 113, 113, 0.45), 0 0 24px rgba(248, 113, 113, 0.2);
+}
+
+.footer-motto-glow {
+  text-shadow: 0 0 12px rgba(77, 255, 136, 0.6), 0 0 24px rgba(77, 255, 136, 0.3);
+}
+
 /* Pliny-style cartouche ornament for section heads */
 .cartouche-badge {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
