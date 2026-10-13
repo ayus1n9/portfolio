@@ -362,5 +362,31 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   box-shadow: 0 0 10px #4dff88, 0 0 20px #4dff88;
 }
 
+/* Mainframe Line-by-Line Stream-In Animation (Option 5) */
+@keyframes lineStreamIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-6px);
+    filter: brightness(2.2) drop-shadow(0 0 20px rgba(77, 255, 136, 0.9));
+  }
+  25% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: brightness(1.7) drop-shadow(0 0 25px rgba(77, 255, 136, 0.8));
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: brightness(1) drop-shadow(0 0 10px rgba(77, 255, 136, 0.45));
+  }
+}
+
+.line-stream-in {
+  opacity: 0;
+  animation: lineStreamIn 0.35s ease-out forwards;
+  will-change: opacity, transform, filter;
+}
+
+
 
 

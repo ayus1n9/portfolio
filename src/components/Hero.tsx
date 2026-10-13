@@ -22,20 +22,15 @@ const ASCII_HERO_MOBILE = `    ___   __  __  __  __   _____   __  __
  ___/ / _/ /   / /|  / / /_/ /  / __  /  
 /____/ /___/  /_/ |_/  \\____/  /_/ /_/   `;
 
+const DESKTOP_LINES = ASCII_HERO_DESKTOP.split("\n");
+const MOBILE_LINES = ASCII_HERO_MOBILE.split("\n");
+
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const bannerRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const [streamKey, setStreamKey] = useState(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!bannerRef.current) return;
-    const rect = bannerRef.current.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-    setIsHovered(true);
+  const replayStream = () => {
+    setStreamKey((prev) => prev + 1);
   };
 
   // Subtle ambient constellation particle canvas
@@ -130,51 +125,47 @@ export default function Hero() {
           0_0
         </div>
 
-        {/* Monumental Name Banner in Pure Terminal ASCII Art (Option 3: Hacker Glyph Decrypt / Scramble) */}
+        {/* Monumental Name Banner in Pure Terminal ASCII Art (Option 5: Mainframe Line-by-Line Stream-In) */}
         <h1 className="mb-6 select-none flex justify-center items-center w-full">
           <span className="sr-only">AYUSH SINGH</span>
           <div
-            ref={bannerRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden cursor-crosshair group"
+            key={streamKey}
+            onMouseEnter={replayStream}
+            className="relative px-3 py-2 sm:px-6 sm:py-3 rounded-2xl bg-black/25 backdrop-blur-md max-w-full overflow-hidden cursor-pointer group transition-transform active:scale-[0.99]"
+            title="Hover to replay line stream-in"
           >
             {/* Ambient soft glow behind letters */}
             <div className="absolute inset-0 bg-cyber-green/[0.04] blur-2xl rounded-full pointer-events-none -z-10" />
 
-            {/* Option 4: Interactive Mouse Spotlight Ambient Glow */}
-            <div
-              className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300 -z-10"
-              style={{
-                opacity: isHovered ? 1 : 0,
-                background: `radial-gradient(240px circle at ${mousePos.x}px ${mousePos.y}px, rgba(77, 255, 136, 0.22), rgba(97, 231, 255, 0.08) 40%, transparent 80%)`,
-              }}
-            />
-
-            {/* Option 4: Character Highlight Spotlight Overlay */}
-            <div
-              className="pointer-events-none absolute inset-0 transition-opacity duration-150 z-10"
-              style={{
-                opacity: isHovered ? 1 : 0,
-                background: `radial-gradient(130px circle at ${mousePos.x}px ${mousePos.y}px, rgba(186, 255, 217, 0.5), rgba(77, 255, 136, 0.15) 50%, transparent 75%)`,
-                mixBlendMode: "screen",
-              }}
-            />
-
             {/* Desktop & Tablet Banner (86 cols) */}
             <pre
               aria-hidden="true"
-              className="hidden md:block font-mono text-[9px] lg:text-[11px] xl:text-[12px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.45)]"
+              className="hidden md:block font-mono text-[9px] lg:text-[11px] xl:text-[12px] leading-[1.18] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar"
             >
-              {ASCII_HERO_DESKTOP}
+              {DESKTOP_LINES.map((line, idx) => (
+                <span
+                  key={idx}
+                  className="block line-stream-in"
+                  style={{ animationDelay: `${idx * 110}ms` }}
+                >
+                  {line}
+                </span>
+              ))}
             </pre>
             {/* Mobile & Small Tablet Banner (46 cols) */}
             <pre
               aria-hidden="true"
-              className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar drop-shadow-[0_0_12px_rgba(77,255,136,0.45)]"
+              className="block md:hidden font-mono text-[7px] xs:text-[8.5px] sm:text-[10px] leading-[1.2] text-cyber-green font-bold text-left select-none tracking-normal overflow-x-auto no-scrollbar"
             >
-              {ASCII_HERO_MOBILE}
+              {MOBILE_LINES.map((line, idx) => (
+                <span
+                  key={idx}
+                  className="block line-stream-in"
+                  style={{ animationDelay: `${idx * 60}ms` }}
+                >
+                  {line || "\u00A0"}
+                </span>
+              ))}
             </pre>
           </div>
         </h1>
