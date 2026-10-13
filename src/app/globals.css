@@ -187,42 +187,6 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
                     linear-gradient(to bottom, rgba(30, 38, 52, 0.5) 1px, transparent 1px);
 }
 
-/* Broken Computer Cursor-Matched Glitch for Hero Heading */
-.text-glitch-cursor {
-  color: #ffffff;
-  position: relative;
-  display: inline-block;
-  animation: brokenGlitchTwitch 0.45s infinite;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
-}
-
-.text-glitch-cursor::before,
-.text-glitch-cursor::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-.text-glitch-cursor::before {
-  color: #00f0ff;
-  transform: translate(-2px, 1px);
-  animation: glitchRgbSplitCyan 0.35s steps(2) infinite;
-  opacity: 0.85;
-  text-shadow: -1px 0 #00f0ff;
-}
-
-.text-glitch-cursor::after {
-  color: #ff0055;
-  transform: translate(2px, -1px);
-  animation: glitchRgbSplitRed 0.35s steps(2) infinite;
-  opacity: 0.85;
-  text-shadow: 1px 0 #ff0055;
-}
 
 /* Hide scrollbar completely across all browsers */
 .no-scrollbar::-webkit-scrollbar {

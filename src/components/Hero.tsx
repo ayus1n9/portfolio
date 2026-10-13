@@ -99,12 +99,16 @@ export default function Hero() {
           0_0
         </div>
 
-        {/* Monumental Name Wordmark with broken computer pointer-matched glitch */}
-        <h1
-          data-text="AYUSH SINGH"
-          className="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-none select-none text-glitch-cursor"
-        >
-          AYUSH SINGH
+        {/* Monumental Name Banner using the provided screenshot */}
+        <h1 className="mb-6 select-none flex justify-center items-center w-full">
+          <span className="sr-only">AYUSH SINGH</span>
+          <img
+            src="/ayush-singh.png"
+            alt="AYUSH SINGH"
+            width={622}
+            height={166}
+            className="w-full max-w-[622px] h-auto object-contain drop-shadow-[0_0_30px_rgba(77,255,136,0.18)]"
+          />
         </h1>
 
         {/* Tagline Row */}
