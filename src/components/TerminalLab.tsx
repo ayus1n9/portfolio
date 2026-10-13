@@ -313,6 +313,9 @@ Containment Directives:
         {/* Section Header with Cyber Green Cartouche */}
         <div className="flex flex-col items-center text-center mb-12">
           <div className="cartouche-badge mb-3 select-none text-cyber-green">01 // CLI</div>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-editorial text-[#07090b] bg-cyber-green px-4 sm:px-6 py-1.5 sm:py-2.5 tracking-tight inline-block uppercase select-none shadow-[4px_4px_0px_#000000]">
+            Interactive Security Terminal
+          </h2>
         </div>
 
         {/* Terminal Window Frame */}

@@ -185,18 +185,43 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-4 bg-black/85 backdrop-blur-sm animate-fadeIn"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl bg-cyber-surface border border-cyber-border rounded-xl shadow-2xl overflow-hidden font-mono flex flex-col max-h-[80vh]"
+        className="w-full max-w-2xl bg-[#0c121e] border-2 border-white shadow-[12px_12px_0px_#000000] overflow-hidden font-mono flex flex-col max-h-[82vh]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label="Command Palette"
       >
+        {/* 1. Retro Menu Bar (from Image 3) */}
+        <div className="bg-[#c0c0c0] text-[#07090b] px-3 py-1 text-[11px] font-mono border-b border-black flex items-center gap-4 select-none shrink-0">
+          <span><strong className="underline">F</strong>ile</span>
+          <span><strong className="underline">C</strong>ommands</span>
+          <span><strong className="underline">H</strong>elp</span>
+          <span className="ml-auto text-[10px] text-gray-700 hidden sm:inline">RETRO_DISPATCH v3.1</span>
+        </div>
+
+        {/* 2. White Retro Title Bar (from Image 3) */}
+        <div className="bg-white text-black px-3 py-1.5 border-b-2 border-black flex items-center justify-between select-none shrink-0">
+          <div className="flex items-center gap-2 overflow-hidden">
+            <span className="px-1.5 py-0.2 bg-black text-white text-[10px] font-bold">■</span>
+            <span className="font-bold text-xs sm:text-sm tracking-wider uppercase truncate">
+              COMMAND_PALETTE.EXE // QUICK_NAV
+            </span>
+          </div>
+          <button
+            onClick={onClose}
+            className="px-2 py-0.5 bg-[#c0c0c0] hover:bg-red-600 hover:text-white text-black text-xs font-bold border border-black shadow-[1.5px_1.5px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 transition-all"
+            aria-label="Close command palette"
+          >
+            ✕
+          </button>
+        </div>
+
         {/* Search Input Bar */}
-        <div className="p-4 bg-cyber-raised border-b border-cyber-border flex items-center gap-3">
+        <div className="p-3 sm:p-4 bg-black/80 border-b-2 border-black flex items-center gap-3">
           <Search className="w-5 h-5 text-cyber-green shrink-0" />
           <input
             ref={inputRef}
@@ -213,13 +238,6 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
             className="w-full bg-transparent border-0 border-none outline-none focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 shadow-none focus:shadow-none text-cyber-text placeholder:text-cyber-dim text-sm p-0"
             style={{ outline: "none", border: "none", boxShadow: "none" }}
           />
-          <button
-            onClick={onClose}
-            className="p-1 rounded text-cyber-dim hover:text-white"
-            aria-label="Close command palette"
-          >
-            <X className="w-4 h-4" />
-          </button>
         </div>
 
         {/* Results List */}
@@ -237,22 +255,22 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                   key={item.id}
                   onClick={item.action}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`w-full text-left p-3 rounded-lg flex items-center justify-between text-xs transition-all ${
+                  className={`w-full text-left p-3 flex items-center justify-between text-xs transition-all ${
                     isSelected
-                      ? "bg-cyber-raised border border-cyber-green/50 text-white"
-                      : "text-cyber-muted hover:bg-cyber-bg border border-transparent"
+                      ? "bg-black text-white border-2 border-cyber-green shadow-[2px_2px_0px_#000000]"
+                      : "text-gray-300 hover:bg-black/50 border-2 border-transparent"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-8 h-8 rounded flex items-center justify-center ${
-                        isSelected ? "bg-cyber-green/10 text-cyber-green" : "bg-cyber-bg text-cyber-dim"
+                      className={`w-8 h-8 flex items-center justify-center border border-black ${
+                        isSelected ? "bg-cyber-green text-black font-bold" : "bg-black text-cyber-green"
                       }`}
                     >
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className={`font-bold ${isSelected ? "text-cyber-green" : "text-cyber-text"}`}>
+                      <div className={`font-bold ${isSelected ? "text-cyber-green" : "text-white"}`}>
                         {item.title}
                       </div>
                       <div className="text-[11px] text-cyber-dim">{item.subtitle}</div>
@@ -260,7 +278,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] text-cyber-dim uppercase tracking-wider px-2 py-0.5 rounded bg-cyber-bg border border-cyber-border">
+                    <span className="text-[10px] text-cyber-dim uppercase tracking-wider px-2 py-0.5 bg-black border border-cyber-border shadow-[1px_1px_0px_#000000]">
                       {item.category}
                     </span>
                     {isSelected && <ArrowRight className="w-3.5 h-3.5 text-cyber-green" />}
@@ -271,14 +289,14 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
           )}
         </div>
 
-        {/* Footer shortcuts */}
-        <div className="px-4 py-2 bg-cyber-bg border-t border-cyber-border text-[11px] text-cyber-dim flex items-center justify-between">
+        {/* Bottom Cyan Command/Status Line (from Image 3) */}
+        <div className="bg-[#00aaaa] text-black px-3 py-1 font-mono text-[11px] font-bold flex items-center justify-between select-none shrink-0 border-t-2 border-black">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>Esc Close</span>
           </div>
-          <span className="text-cyber-green">AYUS1N9 COMMAND DISPATCHER</span>
+          <span className="hidden sm:inline">RETRO_NAV // AYUS1N9</span>
         </div>
       </div>
     </div>
