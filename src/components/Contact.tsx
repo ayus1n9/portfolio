@@ -12,8 +12,9 @@ export default function Contact() {
       icon: GithubIcon,
       target: "_blank",
       rel: "noopener noreferrer",
-      accent: "hover:border-cyber-green/70 hover:shadow-[0_0_30px_rgba(0,255,102,0.25)] text-white hover:text-cyber-green",
-      borderColor: "border-cyber-border",
+      hoverIconColor: "group-hover:text-white group-hover:drop-shadow-[0_0_24px_rgba(255,255,255,0.95)]",
+      glowBg: "bg-white/25",
+      glowHalo: "bg-white/10",
     },
     {
       name: "Email",
@@ -21,8 +22,9 @@ export default function Contact() {
       icon: Mail,
       target: undefined,
       rel: undefined,
-      accent: "hover:border-cyber-red/70 hover:shadow-[0_0_30px_rgba(255,51,102,0.25)] text-white hover:text-cyber-red",
-      borderColor: "border-cyber-border",
+      hoverIconColor: "group-hover:text-[#ff4444] group-hover:drop-shadow-[0_0_24px_rgba(255,68,68,0.95)]",
+      glowBg: "bg-red-500/25",
+      glowHalo: "bg-red-500/10",
     },
     {
       name: "LinkedIn",
@@ -30,8 +32,9 @@ export default function Contact() {
       icon: LinkedinIcon,
       target: "_blank",
       rel: "noopener noreferrer",
-      accent: "hover:border-cyber-cyan/70 hover:shadow-[0_0_30px_rgba(0,229,255,0.25)] text-white hover:text-cyber-cyan",
-      borderColor: "border-cyber-border",
+      hoverIconColor: "group-hover:text-[#0a66c2] group-hover:drop-shadow-[0_0_24px_rgba(10,102,194,0.95)]",
+      glowBg: "bg-[#0a66c2]/30",
+      glowHalo: "bg-[#0a66c2]/15",
     },
   ];
 
@@ -52,30 +55,36 @@ export default function Contact() {
           </h2>
         </div>
 
-        {/* Contact Matrix - Three Large Icons Only */}
-        <div className="max-w-3xl mx-auto bg-cyber-surface/90 border border-cyber-border rounded-xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-          {/* Subtle decorative accent */}
-          <div className="absolute top-0 right-0 w-48 h-48 bg-cyber-green/5 blur-3xl pointer-events-none" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-            {contactLinks.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target={item.target}
-                  rel={item.rel}
-                  aria-label={item.name}
-                  className={`group relative bg-cyber-raised/60 border ${item.borderColor} ${item.accent} rounded-xl p-8 flex items-center justify-center text-center transition-all duration-300 transform hover:-translate-y-1.5`}
-                >
-                  <div className="p-4 rounded-xl bg-black/40 border border-cyber-border/60 group-hover:border-cyber-green/40 transition-colors flex items-center justify-center">
-                    <Icon className="w-12 h-12 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
-                  </div>
-                </a>
-              );
-            })}
-          </div>
+        {/* Contact Icons Only - No Boxes, Glowing Background on Hover */}
+        <div className="flex items-center justify-center gap-10 sm:gap-16 md:gap-20 py-8">
+          {contactLinks.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                target={item.target}
+                rel={item.rel}
+                aria-label={item.name}
+                className="group relative p-4 sm:p-5 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-115 focus:outline-none"
+              >
+                {/* Radial Blurred Ambient Glow on Hover */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-0 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${item.glowBg}`}
+                />
+                {/* Soft Core Backing Glow on Hover */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${item.glowHalo}`}
+                />
+                {/* Icon */}
+                <Icon
+                  className={`w-14 h-14 sm:w-16 sm:h-16 text-white/70 ${item.hoverIconColor} relative z-10 transition-all duration-300`}
+                />
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
