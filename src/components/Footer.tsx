@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowUp, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./Icons";
-import { PORTFOLIO_DATA } from "@/data/portfolioData";
-import DecryptText from "./DecryptText";
+import { ArrowUp } from "lucide-react";
+import VisitorTelemetry from "./VisitorTelemetry";
 
 const VERSES = [
   "der anfang ist das ende. und das ende ist der anfang.",
@@ -31,33 +29,42 @@ export default function Footer() {
     let isMounted = true;
     let timerId: NodeJS.Timeout;
 
-    // Display durations for each verse while hovered:
-    // German (initial hover): 300ms before starting translation
-    // Hindi: 1800ms
-    // English: 2200ms
-    const displayDurations = [300, 1800, 2200];
-
-    const triggerNext = (currentIdx: number) => {
-      if (!isMounted) return;
-      setIsFading(true);
+    const runSequence = () => {
+      // 1. Show English (index 2) after 1.8s
       timerId = setTimeout(() => {
         if (!isMounted) return;
-        const nextIdx = (currentIdx + 1) % VERSES.length;
-        setVerseIndex(nextIdx);
-        setIsFading(false);
+        setIsFading(true);
+        setTimeout(() => {
+          if (!isMounted) return;
+          setVerseIndex(2);
+          setIsFading(false);
 
-        // When looping back to German, give it 1800ms to be read
-        const nextDuration = nextIdx === 0 ? 1800 : displayDurations[nextIdx];
+          // 2. Show Sanskrit (index 1) after another 2.2s
+          timerId = setTimeout(() => {
+            if (!isMounted) return;
+            setIsFading(true);
+            setTimeout(() => {
+              if (!isMounted) return;
+              setVerseIndex(1);
+              setIsFading(false);
 
-        timerId = setTimeout(() => {
-          triggerNext(nextIdx);
-        }, nextDuration);
-      }, 200);
+              // 3. Return to German (index 0) after another 2.2s
+              timerId = setTimeout(() => {
+                if (!isMounted) return;
+                setIsFading(true);
+                setTimeout(() => {
+                  if (!isMounted) return;
+                  setVerseIndex(0);
+                  setIsFading(false);
+                }, 300);
+              }, 2200);
+            }, 300);
+          }, 2200);
+        }, 300);
+      }, 1800);
     };
 
-    timerId = setTimeout(() => {
-      triggerNext(0);
-    }, displayDurations[0]);
+    runSequence();
 
     return () => {
       isMounted = false;
@@ -67,55 +74,39 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-cyber-border/60 bg-cyber-bg py-12 relative z-10 font-mono text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-cyber-border/40">
-          {/* Identity */}
-          <div className="flex items-center gap-3">
-            <div>
-              <div className="font-bold text-white tracking-widest text-sm">
-                <DecryptText text="ayush singh" />
-              </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        {/* Top Header: Identity & Node Status */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-cyber-border/40">
+          <div>
+            <div className="font-bold text-white tracking-widest text-sm uppercase">
+              ayush singh
+            </div>
+            <div className="text-cyber-dim text-[11px] tracking-wider mt-0.5">
+              SECURITY RESEARCH & TOOLMAKING INFRASTRUCTURE
             </div>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-6 text-cyber-muted">
-            <a
-              href={PORTFOLIO_DATA.personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyber-green transition-colors flex items-center gap-1.5"
-            >
-              <GithubIcon className="w-4 h-4" />
-              <span>GITHUB</span>
-            </a>
-            <a
-              href={PORTFOLIO_DATA.personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyber-cyan transition-colors flex items-center gap-1.5"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-              <span>LINKEDIN</span>
-            </a>
-            <a
-              href={`mailto:${PORTFOLIO_DATA.personal.email}`}
-              className="hover:text-cyber-red transition-colors flex items-center gap-1.5"
-            >
-              <Mail className="w-4 h-4" />
-              <span>EMAIL</span>
-            </a>
+          <div className="flex items-center gap-2 text-[11px] text-cyber-muted font-mono">
+            <span className="w-2 h-2 rounded-full bg-cyber-green animate-pulse" />
+            <span className="text-cyber-green font-bold">NODE // ACTIVE</span>
+            <span className="text-cyber-border">•</span>
+            <span className="text-cyber-dim">AMARAVATI, IN</span>
           </div>
         </div>
 
+        {/* Hacker Visitor Telemetry Strip: IPv4, IPv6, DNS, Hardware & Security Profiles */}
+        <div>
+          <VisitorTelemetry />
+        </div>
+
         {/* Bottom Credits, ASCII Sculpture & Interactive Motto */}
-        <div className="pt-8 relative flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px] min-h-[120px] lg:min-h-[440px]">
+        <div className="pt-4 relative flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 text-cyber-dim text-[11px] min-h-[120px] lg:min-h-[440px]">
           {/* Left: Copyright */}
           <div className="order-2 lg:order-1 text-center lg:text-left whitespace-nowrap lg:pb-3 select-none relative z-10 flex-1">
             © {new Date().getFullYear()} Ayush Singh. All rights reserved.
           </div>
 
-          {/* Center: ASCII Sculpture - Centered with inset-x-0 to prevent stacking context or layout shifts */}
+          {/* Center: ASCII Sculpture */}
           <div className="order-1 lg:order-2 lg:absolute lg:inset-x-0 lg:bottom-0 flex items-center justify-center select-none pointer-events-none z-0">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] flex items-center justify-center">
               <img
