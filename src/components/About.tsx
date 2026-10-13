@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { Briefcase, GraduationCap, Award, Users } from "lucide-react";
 
 export default function About() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const cards = [
     {
       identifier: "EXP-01 // PRODUCTION APPSEC",
@@ -87,13 +89,26 @@ export default function About() {
         </div>
 
         {/* Compact Cards Grid matching Featured Projects styling */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
           {cards.map((card, i) => {
             const Icon = card.icon;
+            const isExpanded = expandedIndex === i;
             return (
               <div
                 key={i}
-                className="bg-cyber-surface/70 border border-cyber-border hover:border-cyber-green/40 p-6 sm:p-7 rounded-xl transition-all flex flex-col justify-between group hover:bg-cyber-surface shadow-lg"
+                tabIndex={0}
+                role="region"
+                aria-label={card.title}
+                onClick={() => setExpandedIndex(isExpanded ? null : i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setExpandedIndex(isExpanded ? null : i);
+                  }
+                }}
+                className={`bg-cyber-surface/70 border ${
+                  isExpanded ? "border-cyber-green/60 bg-cyber-surface shadow-cyber-green/5" : "border-cyber-border"
+                } hover:border-cyber-green/40 p-6 sm:p-7 rounded-xl transition-all duration-300 flex flex-col justify-between group hover:bg-cyber-surface shadow-lg cursor-pointer focus:outline-none`}
               >
                 <div>
                   {/* Top Bar */}
@@ -115,32 +130,55 @@ export default function About() {
                     {card.subtitle}
                   </p>
 
-                  {/* Concise summary */}
-                  <p className="text-xs text-cyber-muted font-sans leading-relaxed mb-4">
-                    {card.summary}
-                  </p>
-
-                  {/* Key Highlights */}
-                  <ul className="space-y-2 mb-5 font-sans text-xs text-cyber-muted">
-                    {card.highlights.map((item, hIdx) => (
-                      <li key={hIdx} className="flex items-start gap-2">
-                        <span className="text-cyber-green font-mono text-xs mt-0.5 select-none">▸</span>
-                        <span className="leading-relaxed">{item}</span>
-                      </li>
+                  {/* Tech / Skill Badges */}
+                  <div className="flex flex-wrap gap-1.5 font-mono mb-3">
+                    {card.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 rounded bg-cyber-bg text-cyber-dim group-hover:text-cyber-text text-[10px] font-mono border border-cyber-border/60 transition-colors"
+                      >
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
+
+                  {/* Collapsible Details: Summary & Highlights */}
+                  <div className={`dossier-collapse ${isExpanded ? "is-expanded" : ""}`}>
+                    <div>
+                      <div className="pt-3 pb-1 border-t border-cyber-border/40 my-2">
+                        {/* Concise summary */}
+                        <p className="text-xs text-cyber-muted font-sans leading-relaxed mb-3">
+                          {card.summary}
+                        </p>
+
+                        {/* Key Highlights */}
+                        <ul className="space-y-2 mb-2 font-sans text-xs text-cyber-muted">
+                          {card.highlights.map((item, hIdx) => (
+                            <li key={hIdx} className="flex items-start gap-2">
+                              <span className="text-cyber-green font-mono text-xs mt-0.5 select-none">▸</span>
+                              <span className="leading-relaxed">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Tech / Skill Badges */}
-                <div className="pt-4 border-t border-cyber-border/50 flex flex-wrap gap-1.5 font-mono">
-                  {card.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2 py-0.5 rounded bg-cyber-bg text-cyber-dim group-hover:text-cyber-text text-[10px] font-mono border border-cyber-border/60 transition-colors"
-                    >
-                      {tag}
+                {/* Bottom Hint / Action Bar matching Featured Projects */}
+                <div className="pt-3.5 border-t border-cyber-border/50 flex items-center justify-between font-mono text-xs mt-auto">
+                  <div className="text-cyber-green flex items-center gap-1.5 font-bold text-[11px] sm:text-xs">
+                    <span>Details & Highlights</span>
+                    <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-cyber-dim group-hover:text-cyber-cyan transition-colors">
+                    <span className={isExpanded ? "hidden" : "group-hover:hidden"}>
+                      {card.highlights.length} KEY HIGHLIGHTS
                     </span>
-                  ))}
+                    <span className={isExpanded ? "inline text-cyber-cyan" : "hidden group-hover:inline"}>
+                      EXPANDED
+                    </span>
+                  </span>
                 </div>
               </div>
             );
