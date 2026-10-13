@@ -287,3 +287,38 @@ input:focus, input:focus-visible, textarea:focus, textarea:focus-visible {
   animation: fadeIn 0.25s ease-out forwards;
 }
 
+/* CRT Phosphor Pulse / Breathing Glow for AYUSH SINGH (Option 1) */
+@keyframes phosphorPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(77, 255, 136, 0.35)) drop-shadow(0 0 16px rgba(77, 255, 136, 0.15));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(77, 255, 136, 0.75)) drop-shadow(0 0 32px rgba(77, 255, 136, 0.35)) drop-shadow(0 0 4px rgba(97, 231, 255, 0.5));
+    opacity: 1;
+    color: #5eff99;
+  }
+}
+
+.crt-phosphor-pulse {
+  animation: phosphorPulse 3.5s ease-in-out infinite;
+  will-change: filter, opacity, color;
+}
+
+@keyframes ambientBackdropPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.crt-backdrop-pulse {
+  animation: ambientBackdropPulse 3.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+
