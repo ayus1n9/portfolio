@@ -141,7 +141,7 @@ export const PORTFOLIO_DATA = {
         "GitHub CodeQL",
         "CI/CD Workflows",
       ],
-      githubUrl: "https://github.com/ayus1n9/network-topology-validator",
+      githubUrl: "https://github.com/ayus1n9/BreachMap",
       status: "PyPI Package & Docker Image",
       problem:
         "Architectural flaws such as missing DMZ isolation or exposed administrative ports create trivial lateral movement paths for adversaries. toposec codifies network defenses as automated policy checks.",
@@ -178,7 +178,7 @@ export const PORTFOLIO_DATA = {
         "MIME Parsing",
         "DevSecOps CI",
       ],
-      githubUrl: "https://github.com/ayus1n9/Email-Analyzer",
+      githubUrl: "https://github.com/ayus1n9/MailSleuth",
       status: "CLI, REST API & Web Dashboard",
       problem:
         "Spear-phishing emails frequently use obfuscated redirect links and spoofed envelope headers that slip through legacy filters. This analyzer breaks down header hops and defangs dangerous URLs for safe analyst triage.",
